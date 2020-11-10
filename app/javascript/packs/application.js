@@ -27,8 +27,15 @@ import "bootstrap";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+import { showRentalForm } from '../components/rental_form';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  showRentalForm();
+  // Do something (callback)
+
 });
+
+
+
