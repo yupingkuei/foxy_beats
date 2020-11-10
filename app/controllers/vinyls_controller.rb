@@ -39,6 +39,5 @@ class VinylsController < ApplicationController
 
   def set_vinyl
     @vinyl = Vinyl.find(param[:id])
-
   end
 end
