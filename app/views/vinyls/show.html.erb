@@ -4,7 +4,6 @@
   <p><%= @vinyl.genre %></p>
 </div>
 <%= simple_form_for [@vinyl, @rental] do |f| %>
-  <%= f.input :price %>
   <%= f.input :start_date, as: :date, html5: true %>
   <%= f.input :end_date, as: :date, html5: true %>
   <%= f.submit %>
