@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2020_11_10_061933) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "image_url"
     t.string "cover"
     t.string "cover_small"
     t.string "cover_medium"
