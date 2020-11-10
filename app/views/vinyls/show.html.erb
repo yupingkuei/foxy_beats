@@ -1,7 +1,12 @@
 <div>
-  <h1><%= @vinyl.title %></h1>
-  <p><%= @vinyl.artist %></p>
-  <p><%= @vinyl.genre %></p>
+<%# vinyl details %>
+<h1><%= @vinyl.title %></h1>
+<p><%= @vinyl.artist %></p>
+<p><%= @vinyl.genre %></p>
+<%= image_tag @vinyl.cover_medium %>
+<%# modify the vinyl %>
+<%= link_to "Edit", edit_vinyl_path(@vinyl) if policy(@vinyl).edit? %>
+<%= link_to "Delete", vinyl_path(@vinyl), method: :delete, data: { confirm: "Delete #{@vinyl.title}?" } if policy(@vinyl).destroy?%>
 </div>
 <%= simple_form_for [@vinyl, @rental] do |f| %>
   <%= f.input :start_date, as: :date, html5: true %>

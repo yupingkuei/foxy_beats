@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 2020_11_10_061933) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "nickname"
+    t.string "user_photo"
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -51,6 +53,12 @@ ActiveRecord::Schema.define(version: 2020_11_10_061933) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "image_url"
     t.integer "price"
+    t.string "cover"
+    t.string "cover_small"
+    t.string "cover_medium"
+    t.string "cover_big"
+    t.string "cover_xl"
+    t.string "status"
     t.index ["user_id"], name: "index_vinyls_on_user_id"
   end
 
