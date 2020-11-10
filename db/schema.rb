@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_10_042057) do
+ActiveRecord::Schema.define(version: 2020_11_10_055221) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2020_11_10_042057) do
     t.string "cover_medium"
     t.string "cover_big"
     t.string "cover_xl"
-    t.string "image_url"
+    t.string "status"
     t.index ["user_id"], name: "index_vinyls_on_user_id"
   end
 
