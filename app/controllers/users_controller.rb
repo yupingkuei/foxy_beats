@@ -3,9 +3,10 @@ class UsersController < ApplicationController
 
   def dashboard
     @collection = current_user.vinyls
-    @pending_confirmations = current_user.rentals_as_owner.where(status: "pending")
-    @rentals = current_user.rentals
-    @pending_rentals = current_user.rentals.where(status: "pending")
+    @pending_confirmations = current_user.rentals_as_owner.where(status: "Pending")
+    @rentals = current_user.rentals.where.not(status: "Pending")
+    @pending_rentals = current_user.rentals.where(status: "Pending")
+
   end
 
   def collection

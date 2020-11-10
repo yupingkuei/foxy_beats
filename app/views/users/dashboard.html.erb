@@ -1,30 +1,44 @@
 <h1>Welcome back <%= current_user.email %>!</h1>
-<% @collection.each do |vinyl|  %>
-<p><%= link_to vinyl_path(vinyl) do %>
-  <%= image_tag vinyl.cover, alt: "alttext" %>
-  <% end %>
-<p><%= link_to vinyl.title, vinyl_path(vinyl) %></p>
-<% end %>
+<div class="container">
 
-<% @pending_confirmations.each do |vinyl|  %>
-<p><%= link_to vinyl_path(vinyl) do %>
-  <%= image_tag vinyl.cover, alt: "alttext" %>
-  <% end %>
-<p><%= link_to vinyl.title, vinyl_path(vinyl) %></p>
-<% end %>
+  <div >
+    <h2>Collection</h2>
+    <ul>
+    <% @collection.each do |vinyl|  %>
+    <li><%= link_to vinyl_path(vinyl) do %>
+      <%= image_tag vinyl.cover, alt: "alttext" %>
+      <% end %><%= link_to vinyl.title, vinyl_path(vinyl) %></li>
+    </ul>
+    <% end %>
 
-<% @rentals.each do |vinyl|  %>
-<p><%= link_to vinyl_path(vinyl) do %>
-  <%= image_tag vinyl.cover, alt: "alttext" %>
-  <% end %>
-<p><%= link_to vinyl.title, vinyl_path(vinyl) %></p>
-<% end %>
+    <h2>Pending Confirmations</h2>
+    <ul>
+    <% @pending_confirmations.each do |rental|  %>
+    <li><%= link_to vinyl_path(rental.vinyl) do %>
+      <%= image_tag rental.vinyl.cover, alt: "alttext" %>
+      <% end %><%= link_to rental.vinyl.title, vinyl_path(rental.vinyl) %></li>
+    </ul>
+    <% end %>
+  </div>
 
-<% @pending_rentals.each do |vinyl|  %>
-<p><%= link_to vinyl_path(vinyl) do %>
-  <%= image_tag vinyl.cover, alt: "alttext" %>
-  <% end %>
-<p><%= link_to vinyl.title, vinyl_path(vinyl) %></p>
-<% end %>
+  <div >
+    <h2>Rentals</h2>
+    <ul>
+    <% @rentals.each do |rental|  %>
+    <li><%= link_to vinyl_path(rental.vinyl) do %>
+      <%= image_tag rental.vinyl.cover, alt: "alttext" %>
+      <% end %> <%= link_to rental.vinyl.title, vinyl_path(rental.vinyl) %></li>
+    </ul>
+    <% end %>
 
+    <h2>Pending Rentals</h2>
+    <ul>
+    <% @pending_rentals.each do |rental|  %>
+    <li><%= link_to vinyl_path(rental.vinyl) do %>
+      <%= image_tag rental.vinyl.cover, alt: "alttext" %>
+      <% end %><%= link_to rental.vinyl.title, vinyl_path(rental.vinyl) %></li>
+    </ul>
+    <% end %>
+  </div>
 
+</div>
