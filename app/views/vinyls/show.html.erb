@@ -8,6 +8,7 @@
 <%= link_to "Edit", edit_vinyl_path(@vinyl) if policy(@vinyl).edit? %>
 <%= link_to "Delete", vinyl_path(@vinyl), method: :delete, data: { confirm: "Delete #{@vinyl.title}?" } if policy(@vinyl).destroy?%>
 </div>
+<%# renting a vinyl %>
 <%= simple_form_for [@vinyl, @rental] do |f| %>
   <%= f.input :start_date, as: :date, html5: true %>
   <%= f.input :end_date, as: :date, html5: true %>
