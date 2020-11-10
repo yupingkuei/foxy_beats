@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2020_11_10_061933) do
     t.string "cover_medium"
     t.string "cover_big"
     t.string "cover_xl"
+    t.string "image_url"
     t.string "status"
     t.integer "price"
     t.index ["user_id"], name: "index_vinyls_on_user_id"

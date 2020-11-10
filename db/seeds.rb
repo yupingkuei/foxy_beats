@@ -4,14 +4,16 @@ require 'uri'
 require 'net/http'
 require 'openssl'
 
-puts 'destroying all users...'
-User.destroy_all
-puts 'destroying all vinyls...'
-Vinyl.destroy_all
-puts 'destroying all vinyls...'
+puts 'destroying all Rentals...'
 Rental.destroy_all
 
-puts "creating random users"
+puts 'destroying all vinyls...'
+Vinyl.destroy_all
+
+puts 'destroying all users...'
+User.destroy_all
+
+puts "creating random users..."
 50.times do
   User.create!(
     email: Faker::Internet.email,
@@ -19,10 +21,6 @@ puts "creating random users"
     user_photo: Faker::Avatar.image(slug: "my-own-slug", size: "50x50", format: "jpg")
     )
 end
-
-
-
-
 
 url = URI("https://deezerdevs-deezer.p.rapidapi.com/search?q=t")
 
@@ -42,9 +40,6 @@ tracks = result["data"].select do |element|
   albums << element["album"]["id"]
 end
 
-
-p albums
-
 albums.each do |id|
   url = URI("https://deezerdevs-deezer.p.rapidapi.com/album/#{id}")
   http = Net::HTTP.new(url.host, url.port)
@@ -58,8 +53,6 @@ albums.each do |id|
 
   response = http.request(request)
   album = JSON.parse(response.read_body)
-  # p album["artist"]["name"]
-  # p album["cover_big"]
 
   puts "creating vinyl..."
   vinyl = Vinyl.new(
@@ -72,20 +65,20 @@ albums.each do |id|
     cover_big: album["cover_big"],
     cover_xl: album["cover_xl"],
     album_api_id: album["id"],
-    artist_api_id: album["artist"]["id"]
+    artist_api_id: album["artist"]["id"],
+    price: rand(50..200)
   )
   user = User.all.sample
   vinyl.user = user
   vinyl.save
 end
 
-
-
-
-puts "creating random rentals"
 10.times do
+  puts "creating random rentals..."
   Rental.create!(
     user: User.all.sample,
-    vinyl: Vinyl.all.sample
+    vinyl: Vinyl.all.sample,
+    start_date: Date.today - rand(1..10),
+    end_date: Date.today + rand(1..10)
     )
 end
