@@ -1,20 +1,31 @@
-<div>
-<%# vinyl details %>
-<h1><%= @vinyl.title %></h1>
-<p><%= @vinyl.artist %></p>
-<p><%= @vinyl.genre %></p>
-<%= image_tag @vinyl.cover_medium %>
-<%# modify the vinyl %>
-<% if current_user and policy(@vinyl).edit? %>
-<%= link_to "Edit", edit_vinyl_path(@vinyl)  %>
-<% end %>
-
-<% if current_user and policy(@vinyl).destroy? %>
-<%= link_to "Delete", vinyl_path(@vinyl), method: :delete, data: { confirm: "Delete #{@vinyl.title}?" } %>
-<% end %>
+<div class="show">
+  <div>
+    <%# vinyl details %>
+    <h1><%= @vinyl.title %></h1>
+    <p><%= @vinyl.artist %></p>
+    <p><%= @vinyl.genre %></p>
+    <%= image_tag @vinyl.cover_medium %>
+    <%# modify the vinyl %>
+    <% if current_user and policy(@vinyl).edit? %>
+      <%= link_to "Edit", edit_vinyl_path(@vinyl)  %>
+    <% end %>
+    <% if current_user and policy(@vinyl).destroy? %>
+      <%= link_to "Delete", vinyl_path(@vinyl), method: :delete, data: { confirm: "Delete #{@vinyl.title}?" } %>
+    <% end %>
+  </div>
+  <div class="rental-section">
+    <% if user_signed_in? %>
+      <button id="rental-btn" type="button" class="btn btn-primary">Rent this vinyl</button>
+      <div id="rental-form">
+        <h4>Select the rental dates:</h4>
+        <%= simple_form_for [@vinyl, @rental] do |f| %>
+          <%= f.input :start_date, as: :date, html5: true %>
+          <%= f.input :end_date, as: :date, html5: true %>
+          <%= f.submit %>
+        <% end %>
+      </div>
+    <% else %>
+      <%= link_to "Sign in to rental", new_user_session_path, class: "btn btn-primary" %>
+    <% end %>
+  </div>
 </div>
-<%= simple_form_for [@vinyl, @rental] do |f| %>
-  <%= f.input :start_date, as: :date, html5: true %>
-  <%= f.input :end_date, as: :date, html5: true %>
-  <%= f.submit %>
-<% end %>
