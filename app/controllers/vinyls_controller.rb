@@ -1,24 +1,18 @@
 class VinylsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-
+  before_action :set_vinyl, only: [:show, :edit, :update, :destroy]
 	def index
     @vinyls = policy_scope(Vinyl).order(created_at: :desc)
 	end
 
 	def show
-		@vinyl = Vinyl.find(params[:id])
 		@rental = Rental.new
-    authorize @vinyl
 	end
 
 	def edit
-
-		@vinyl = Vinyl.find(params[:id])
-    authorize @vinyl
 	end
 
 	def update
-		@vinyl = Vinyl.find(params[:id])
 		if @vinyl.update(vinyl_params)
 			redirect_to vinyl_path(@vinyl)
 		else
@@ -27,8 +21,6 @@ class VinylsController < ApplicationController
 	end
 
 	def destroy
-		@vinyl = Vinyl.find(params[:id])
-    authorize @vinyl
 		@vinyl.destroy
 		redirect_to vinyls_path
 	end
@@ -39,6 +31,7 @@ class VinylsController < ApplicationController
 	end
 
   def set_vinyl
-    @vinyl = Vinyl.find(param[:id])
+    @vinyl = Vinyl.find(params[:id])
+    authorize @vinyl
   end
 end
