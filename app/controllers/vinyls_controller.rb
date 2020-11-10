@@ -21,6 +21,12 @@ class VinylsController < ApplicationController
 		end
 	end
 
+	def destroy
+		@vinyl = Vinyl.find(params[:id])
+		@vinyl.destroy
+		redirect_to vinyls_path
+	end
+
 	private
 	def vinyl_params
 		params.require(:vinyl).permit(:title, :genre, :artist)
