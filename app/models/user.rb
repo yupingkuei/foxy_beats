@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :vinyls
+  has_many :vinyls, dependent: :destroy
   has_many :rentals
   has_many :rentals_as_owner, through: :vinyls, source: :rentals
 end
