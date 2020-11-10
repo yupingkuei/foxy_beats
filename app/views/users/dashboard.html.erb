@@ -1,0 +1,30 @@
+<h1>Welcome back <%= current_user.email %>!</h1>
+<% @collection.each do |vinyl|  %>
+<p><%= link_to vinyl_path(vinyl) do %>
+  <%= image_tag vinyl.cover, alt: "alttext" %>
+  <% end %>
+<p><%= link_to vinyl.title, vinyl_path(vinyl) %></p>
+<% end %>
+
+<% @pending_confirmations.each do |vinyl|  %>
+<p><%= link_to vinyl_path(vinyl) do %>
+  <%= image_tag vinyl.cover, alt: "alttext" %>
+  <% end %>
+<p><%= link_to vinyl.title, vinyl_path(vinyl) %></p>
+<% end %>
+
+<% @rentals.each do |vinyl|  %>
+<p><%= link_to vinyl_path(vinyl) do %>
+  <%= image_tag vinyl.cover, alt: "alttext" %>
+  <% end %>
+<p><%= link_to vinyl.title, vinyl_path(vinyl) %></p>
+<% end %>
+
+<% @pending_rentals.each do |vinyl|  %>
+<p><%= link_to vinyl_path(vinyl) do %>
+  <%= image_tag vinyl.cover, alt: "alttext" %>
+  <% end %>
+<p><%= link_to vinyl.title, vinyl_path(vinyl) %></p>
+<% end %>
+
+
