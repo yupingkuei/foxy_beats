@@ -13,7 +13,7 @@ class VinylsController < ApplicationController
 	end
 
 	def update
-		@vinyl - Vinyl.find(params[:id])
+		@vinyl = Vinyl.find(params[:id])
 		if @vinyl.update(vinyl_params)
 			redirect_to vinyl_path(@vinyl)
 		else
