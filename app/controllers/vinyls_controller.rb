@@ -1,15 +1,19 @@
 class VinylsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
 	def index
-		@vinyls = Vinyl.all
+    @vinyls = policy_scope(Vinyl).order(created_at: :desc)
 	end
 
 	def show
 		@vinyl = Vinyl.find(params[:id])
+    authorize @vinyl
 	end
 
 	def edit
+
 		@vinyl = Vinyl.find(params[:id])
+    authorize @vinyl
 	end
 
 	def update
@@ -23,6 +27,7 @@ class VinylsController < ApplicationController
 
 	def destroy
 		@vinyl = Vinyl.find(params[:id])
+    authorize @vinyl
 		@vinyl.destroy
 		redirect_to vinyls_path
 	end
@@ -31,4 +36,9 @@ class VinylsController < ApplicationController
 	def vinyl_params
 		params.require(:vinyl).permit(:title, :genre, :artist)
 	end
+
+  def set_vinyl
+    @vinyl = Vinyl.find(param[:id])
+
+  end
 end
