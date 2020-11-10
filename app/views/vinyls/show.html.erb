@@ -2,6 +2,6 @@
 <h1><%= @vinyl.title %></h1>
 <p><%= @vinyl.artist %></p>
 <p><%= @vinyl.genre %></p>
-<%= link_to "Edit", edit_vinyl_path(@vinyl)  %>
-<%= link_to "Delete", vinyl_path(@vinyl), method: :delete, data: { confirm: "Delete #{@vinyl.title}?" } %>
+<%= link_to "Edit", edit_vinyl_path(@vinyl) if policy(@vinyl).edit? %>
+<%= link_to "Delete", vinyl_path(@vinyl), method: :delete, data: { confirm: "Delete #{@vinyl.title}?" } if policy(@vinyl).destroy?%>
 </div>
