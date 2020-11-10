@@ -2,6 +2,7 @@ class RentalsController < ApplicationController
   def new
     @rental = Rental.new
     @vinyl = Vinyl.find(params[:vinyl_id])
+    authorize @rental
   end
 
   def create
@@ -9,6 +10,7 @@ class RentalsController < ApplicationController
     @vinyl = Vinyl.find(params[:vinyl_id])
     @rental.user = current_user
     @rental.vinyl = @vinyl
+    authorize @rental
     if @rental.save
       redirect_to vinyl_path(@vinyl)
     else
@@ -19,6 +21,6 @@ class RentalsController < ApplicationController
   private
 
   def rental_params
-    params.require(:rental).permit(:vinyl_id, :user_id, :price, :start_date, :end_date, :status)
+    params.require(:rental).permit(:vinyl_id, :user_id, :start_date, :end_date, :status)
   end
 end
