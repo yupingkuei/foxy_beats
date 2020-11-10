@@ -7,6 +7,7 @@ class VinylsController < ApplicationController
 
 	def show
 		@vinyl = Vinyl.find(params[:id])
+		@rental = Rental.new
     authorize @vinyl
 	end
 

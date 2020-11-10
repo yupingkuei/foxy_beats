@@ -52,13 +52,13 @@ ActiveRecord::Schema.define(version: 2020_11_10_061933) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "image_url"
-    t.integer "price"
     t.string "cover"
     t.string "cover_small"
     t.string "cover_medium"
     t.string "cover_big"
     t.string "cover_xl"
     t.string "status"
+    t.integer "price"
     t.index ["user_id"], name: "index_vinyls_on_user_id"
   end
 
