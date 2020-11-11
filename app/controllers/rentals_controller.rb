@@ -12,7 +12,7 @@ class RentalsController < ApplicationController
     @rental.vinyl = @vinyl
     authorize @rental
     if @rental.save
-      redirect_to vinyl_path(@vinyl)
+      redirect_to dashboard_path
     else
       render "vinyls/show"
     end
