@@ -53,7 +53,7 @@ albums.each do |id|
 
   response = http.request(request)
   album = JSON.parse(response.read_body)
-
+  next unless album["artist"]
   puts "creating vinyl for t..."
   vinyl = Vinyl.new(
     title: album["title"],
