@@ -1,134 +1,129 @@
 <div class="peach">
-	<h1>Welcome back, <%= current_user.email %>!</h1>
-
-	<div class="grid-container" >
-		<%# Collection box %>
-		<div class="grid-item item1">
-			<div class="grid-text">
-				<h2>My Collection</h2>
-				<ul>
-				<% @collection.each do |vinyl|  %>
-					<li>
-						<%= link_to vinyl_path(vinyl) do %>
-							<div class="flip-card">
-								<div class="flip-card-inner">
-									<div class="flip-card-front">
-										<div class="card-index">
-											<div class="card-image">
-												<%= image_tag vinyl.cover, alt: "alttext", class: 'card-image'%>
-											</div>
-										</div>
-									</div>
-									<div class="flip-card-back">
-										<div class="flip-card-text">
-										<h1><%= vinyl.artist %></h1>
-										<p><%= vinyl.title %></p>
-										</div>
-									</div>
-								</div>
-							</div>
-						<% end %>
-					</li>
-				<% end %>
-				</ul>
-			</div>
-		</div>
-
-		<%# Rentals box %>
-		<div class="grid-item item2">
-			<div class="grid-text">
-				<h2>Rentals</h2>
-				<ul>
-					<% @rentals.each do |rental|  %>
-						<li>
-						<%= link_to vinyl_path(rental.vinyl) do %>
-							<div class="flip-card">
-								<div class="flip-card-inner">
-									<div class="flip-card-front">
-										<div class="card-index">
-											<div class="card-image">
-												<%= image_tag rental.vinyl.cover, alt: "alttext", class: 'card-image'%>
-											</div>
-										</div>
-									</div>
-									<div class="flip-card-back">
-										<div class="flip-card-text">
-										<h1><%= rental.vinyl.artist %></h1>
-										<p><%= rental.vinyl.title %></p>
-										</div>
-									</div>
-								</div>
-							</div>
-						<% end %>
-						</li>
-					<% end %>
-				</ul>
-			</div>
-		</div>
-
-		<%# Pending Confirmations Box %>
-		<div class="grid-item item3">
-			<div class="grid-text">
-				<h2>Pending Confirmations</h2>
-				<ul>
-					<% @pending_confirmations.each do |rental|  %>
-						<li>
-							<%= link_to vinyl_path(rental.vinyl) do %>
-							<div class="flip-card">
-								<div class="flip-card-inner">
-									<div class="flip-card-front">
-										<div class="card-index">
-											<div class="card-image">
-												<%= image_tag rental.vinyl.cover, alt: "alttext", class: 'card-image'%>
-											</div>
-										</div>
-									</div>
-									<div class="flip-card-back">
-										<div class="flip-card-text">
-										<h1><%= rental.vinyl.artist %></h1>
-										<p><%= rental.vinyl.title %></p>
-										</div>
-									</div>
-								</div>
-							</div>
-						<% end %>
-						</li>
-					<% end %>
-				</ul>
-			</div>
-		</div>
-
-
-		<%# Pending Rentals box %>
-		<div class="grid-item item4">
-			<div class="grid-text">
-				<h2>Pending Rentals</h2>
-				<ul>
-					<% @pending_rentals.each do |rental|  %>
-						<li>
-							<%= link_to vinyl_path(rental.vinyl) do %>
-							<div class="flip-card">
-								<div class="flip-card-inner">
-									<div class="flip-card-front">
-										<div class="card-index">
-											<div class="card-image">
-												<%= image_tag rental.vinyl.cover, alt: "alttext", class: 'card-image'%>
-											</div>
-										</div>
-									</div>
-									<div class="flip-card-back">
-										<div class="flip-card-text">
-										<h1><%= rental.vinyl.artist %></h1>
-										<p><%= rental.vinyl.title %></p>
-										</div>
-									</div>
-								</div>
-							</div>
-						<% end %>
-							</li>
-					<% end %>
-				</ul>
-			</div>
-		</div>
-	</div>
+  <h2>Welcome back, <%= current_user.email %>!</h2>
+  <div class="grid-container" >
+    <%# Collection box %>
+    <div class="grid-item item1">
+      <div class="grid-text">
+        <h3>My Collection</h3>
+        <ul>
+          <% @collection.each do |vinyl|  %>
+            <li>
+              <%= link_to vinyl_path(vinyl) do %>
+                <div class="flip-card">
+                  <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                      <div class="card-index">
+                        <div class="card-image">
+                          <%= image_tag vinyl.cover, alt: "alttext", class: 'card-image'%>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flip-card-back">
+                      <div class="flip-card-text">
+                        <h1><%= vinyl.artist %></h1>
+                        <p><%= vinyl.title %></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <%# Rentals box %>
+    <div class="grid-item item2">
+      <div class="grid-text">
+        <h3>Rentals</h3>
+        <ul>
+          <% @rentals.each do |rental|  %>
+            <li>
+              <%= link_to vinyl_path(rental.vinyl) do %>
+                <div class="flip-card">
+                  <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                      <div class="card-index">
+                        <div class="card-image">
+                          <%= image_tag rental.vinyl.cover, alt: "alttext", class: 'card-image'%>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flip-card-back">
+                      <div class="flip-card-text">
+                        <h1><%= rental.vinyl.artist %></h1>
+                        <p><%= rental.vinyl.title %></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <%# Pending Confirmations Box %>
+    <div class="grid-item item3">
+      <div class="grid-text">
+        <h3>Pending Confirmations</h3>
+        <ul>
+          <% @pending_confirmations.each do |rental|  %>
+            <li>
+              <%= link_to vinyl_path(rental.vinyl) do %>
+                <div class="flip-card">
+                  <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                      <div class="card-index">
+                        <div class="card-image">
+                          <%= image_tag rental.vinyl.cover, alt: "alttext", class: 'card-image'%>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flip-card-back">
+                      <div class="flip-card-text">
+                        <h1><%= rental.vinyl.artist %></h1>
+                        <p><%= rental.vinyl.title %></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <%# Pending Rentals box %>
+    <div class="grid-item item4">
+      <div class="grid-text">
+        <h3>Pending Rentals</h3>
+        <ul>
+          <% @pending_rentals.each do |rental|  %>
+            <li>
+              <%= link_to vinyl_path(rental.vinyl) do %>
+                <div class="flip-card">
+                  <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                      <div class="card-index">
+                        <div class="card-image">
+                          <%= image_tag rental.vinyl.cover, alt: "alttext", class: 'card-image'%>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flip-card-back">
+                      <div class="flip-card-text">
+                        <h1><%= rental.vinyl.artist %></h1>
+                        <p><%= rental.vinyl.title %></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
