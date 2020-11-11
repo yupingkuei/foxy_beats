@@ -4,6 +4,7 @@
   top: 26px;
   left: 27px;
   width: 76%;
+
 }
 
 .card-index {
@@ -16,12 +17,11 @@
 
 
 
-
 .flip-card {
   background-color: transparent;
   width: 240px;
   height: 240px;
-  border: 1px solid #f1f1f1;
+
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
 
@@ -33,6 +33,7 @@
   text-align: center;
   transition: transform 0.8s;
   transform-style: preserve-3d;
+
 }
 
 /* Do an horizontal flip when you move the mouse over the flip box container */
@@ -52,6 +53,7 @@
   height: 100%;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+
 }
 
 .flip-card-back {
@@ -85,10 +87,53 @@
   top: 60px;
   left: 24px;
     h1, p {
-      color:red;
+      color:white;
       margin-top: 4px;
       font-size: 16px;
 
     }
 }
 
+
+// grid
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
