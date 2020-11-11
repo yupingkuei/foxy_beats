@@ -104,7 +104,7 @@ albums.each do |id|
 
   response = http.request(request)
   album = JSON.parse(response.read_body)
-
+  next unless album["artist"]
   puts "creating vinyl for g..."
   vinyl = Vinyl.new(
     title: album["title"],
@@ -156,7 +156,7 @@ albums.each do |id|
 
   response = http.request(request)
   album = JSON.parse(response.read_body)
-
+  next unless album["artist"]
   puts "creating vinyl for n..."
   vinyl = Vinyl.new(
     title: album["title"],
@@ -207,7 +207,7 @@ albums.each do |id|
 
   response = http.request(request)
   album = JSON.parse(response.read_body)
-
+  next unless album["artist"]
   puts "creating vinyl for p..."
   vinyl = Vinyl.new(
     title: album["title"],
