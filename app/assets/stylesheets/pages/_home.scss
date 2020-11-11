@@ -22,5 +22,12 @@
   padding: 25px 25px;
   border-radius: 30px;
   font-size: 25px;
+}
+
+.home-btn:hover {
+  text-decoration: none;
+  background-color: #CE4530;
+  transition: 1s;
+  color: #F2DEB3;
 
 }
