@@ -2,6 +2,7 @@
   <h1>Vinyls available - <%= @vinyls.count%></h1>
   <ul>
     <div class="cards">
+      <%= link_to "new", new_vinyl_path%>
       <% @vinyls.each do |vinyl| %>
         <%= link_to vinyl_path(vinyl) do %>
           <div class="flip-card">
