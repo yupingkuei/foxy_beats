@@ -11,4 +11,3 @@ rentalBtn.addEventListener("click", (event) => {
 };
 
 export { showRentalForm };
-
