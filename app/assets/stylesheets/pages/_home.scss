@@ -1,1 +1,26 @@
 // Specific CSS for your home-page
+.home-backgorund {
+  background-image: url('home.PNG');
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  position: relative;
+  h1 {
+    font-family: 'prisma';
+    font-size: 100px;
+    padding: 96px 32px 32px 32px;
+  }
+}
+
+
+.btn {
+  position: absolute;
+  right: 40px;
+  bottom: 110px;
+  background-color: #661529;
+  color: #F2DEB3;
+  padding: 25px 25px;
+  border-radius: 30px;
+  font-size: 25px;
+
+}
