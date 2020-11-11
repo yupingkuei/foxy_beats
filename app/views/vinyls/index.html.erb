@@ -3,6 +3,28 @@
 	<ul>
 		<% @vinyls.each do |vinyl| %>
 			<li><%= link_to vinyl.title, vinyl_path(vinyl)  %></li>
+      <%= link_to vinyl_path(vinyl) do %>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div class="card-index">
+              <div class="card-image">
+                <%= image_tag vinyl.cover, alt: "alttext", class: 'card-image'%>
+              </div>
+            </div>
+          </div>
+          <div class="flip-card-back">
+            <div class="flip-card-text">
+            <h1><%= vinyl.artist %></h1>
+            <p><%= vinyl.title %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
 		<% end %>
 	</ul>
+
+
+
 </div>
