@@ -4,7 +4,7 @@
     <h1><%= @vinyl.title %></h1>
     <p><%= @vinyl.artist %></p>
     <p><%= @vinyl.genre %></p>
-    <%= image_tag @vinyl.cover_medium %>
+    <%= image_tag @vinyl.cover_medium%>
     <%# modify the vinyl %>
     <% if current_user and policy(@vinyl).edit? %>
       <%= link_to "Edit", edit_vinyl_path(@vinyl)  %>
@@ -28,4 +28,7 @@
       <%= link_to "Sign in to rental", new_user_session_path, class: "btn btn-primary" %>
     <% end %>
   </div>
+
+
+
 </div>

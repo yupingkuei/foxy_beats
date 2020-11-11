@@ -1,0 +1,94 @@
+.card-image{
+  border-radius: 50%;
+  position: absolute;
+  top: 26px;
+  left: 27px;
+  width: 76%;
+}
+
+.card-index {
+  background-image: url("vinyl-card.png");
+  width: 240px;
+  height: 240px;
+  background-size: cover;
+  position: relative;
+}
+
+
+
+
+.flip-card {
+  background-color: transparent;
+  width: 240px;
+  height: 240px;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card:hover .card-image {
+  visibility: hidden;
+  transition: 200ms;
+}
+
+/* Position the front and back side */
+.flip-card-front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-back {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+
+
+/* Style the back side */
+.flip-card-back {
+  border-radius: 50%;
+  width: 210px;
+  height: 210px;
+  background-color: black;
+  color: white;
+  transform: rotateY(180deg);
+
+
+}
+
+.flip-card-text{
+  width: 160px;
+  height: 160px;
+  position: absolute;
+  top: 60px;
+  left: 24px;
+    h1, p {
+      color:red;
+      margin-top: 4px;
+      font-size: 16px;
+
+    }
+}
+
