@@ -1,29 +1,28 @@
 <div class="index-background">
-	<h1>Here are all the vinyls</h1>
-	<ul>
+  <h1>Vinyls available - <%= @vinyls.count%></h1>
+  <ul>
     <div class="cards">
-		  <% @vinyls.each do |vinyl| %>
-
+      <% @vinyls.each do |vinyl| %>
         <%= link_to vinyl_path(vinyl) do %>
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front">
-              <div class="card-index">
-                <div class="card-image">
-                  <%= image_tag vinyl.cover, alt: "alttext", class: 'card-image'%>
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="card-index">
+                  <div class="card-image">
+                    <%= image_tag vinyl.cover, alt: "alttext", class: 'card-image'%>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-card-back">
+                <div class="flip-card-text">
+                  <h1><%= vinyl.artist %></h1>
+                  <p><%= vinyl.title %></p>
                 </div>
               </div>
             </div>
-            <div class="flip-card-back">
-              <div class="flip-card-text">
-              <h1><%= vinyl.artist %></h1>
-              <p><%= vinyl.title %></p>
-              </div>
-            </div>
           </div>
-        </div>
         <% end %>
-		  <% end %>
+      <% end %>
     </div>
-	</ul>
+  </ul>
 </div>
