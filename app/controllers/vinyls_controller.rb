@@ -25,6 +25,7 @@ class VinylsController < ApplicationController
     if params[:artist].present?
       @vinyls = filter(params["artist"], params["title"])
       @price = params["price"].to_i
+      @condition = params["condition"]
     else
       true
     end
@@ -42,7 +43,6 @@ class VinylsController < ApplicationController
     #   cover_xl: params["vinyl"]["cover_xl"],
     #   album_api_id: params["vinyl"]["album_api_id"],
     #   artist_api_id: params["vinyl"]["artist_api_id"],
-    # )
     authorize @vinyl
     @vinyl.user = current_user
     if @vinyl.save
@@ -71,7 +71,7 @@ class VinylsController < ApplicationController
   private
 
   def vinyl_params
-    params.require(:vinyl).permit(:title, :artist, :cover, :cover_small, :cover_medium, :cover_big, :cover_xl, :album_api_id, :artist_api_id)
+    params.require(:vinyl).permit(:title, :artist, :cover, :cover_small, :cover_medium, :cover_big, :cover_xl, :album_api_id, :artist_api_id, :condition, :price)
 
   end
 

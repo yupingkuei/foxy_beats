@@ -18,7 +18,8 @@
         <div class="intro">
           <h1><%= @vinyl.title %></h1>
           <h3>Artist - <%= @vinyl.artist %></h3>
-          <h3>Genre - <%= @vinyl.genre %></h3>
+          <h3>Condition - <%= @vinyl.condition %></h3>
+          <h3>Price - ¥<%= @vinyl.price %></h3>
         </div>
         <% if user_signed_in? %>
           <button id="rental-btn" type="button" class="btn btn-primary">Rent this vinyl</button>
@@ -38,7 +39,7 @@
   </div>
   <div class="container">
     <div class="owner-sellection mt-5">
-      <h2>Other vinyls from <%= @vinyl.user.nickname %>:</h2>
+      <h2>Other vinyls from <%= @vinyl.user.nickname.capitalize %>:</h2>
       <% @vinyl.user.vinyls.each do |vinyl| %>
         <%= link_to vinyl_path(vinyl) do %>
           <div id="disc-sm">

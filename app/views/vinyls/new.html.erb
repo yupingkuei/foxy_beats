@@ -1,28 +1,32 @@
-new.html.erb
-  <%= form_tag new_vinyl_path, method: :get, local:true do %>
-    <%= text_field_tag :artist,
+<h1>Add a new vinyl</h1>
+<%= form_tag new_vinyl_path, method: :get, local:true do %>
+  <%= label_tag(:q, "Artist:") %>
+  <%= text_field_tag :artist,
       params[:artist],
       class: "form-control",
       placeholder: "Enter artist"
     %>
-   <%= text_field_tag :title,
+  <%= label_tag(:q, "Title:") %>
+  <%= text_field_tag :title,
       params[:title],
       class: "form-control",
       placeholder: "Enter title"
     %>
-
-    <%= text_field_tag :price,
+  <%= label_tag(:q, "Condition:") %>
+  <%= select_tag :condition, options_for_select(Vinyl::CONDITIONS),
+      class: "form-control",
+      placeholder: "Select condition"
+    %>
+  <%= label_tag(:q, "Price:") %>
+  <%= number_field_tag :price,
       params[:price],
+      required: true,
+      min: 1,
       class: "form-control",
       placeholder: "Enter price"
     %>
-
-    <%= submit_tag "Search", class: "btn btn-primary" %>
-  <% end %>
-
-
-
-
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
 <% if params['artist'].present? %>
   <% @vinyls.each do |vinyl| %>
     <p><%= vinyl.artist %></p>
@@ -39,6 +43,7 @@ new.html.erb
       <%= f.input :album_api_id, as: :hidden, input_html: { value: vinyl.album_api_id } %>
       <%= f.input :artist_api_id, as: :hidden, input_html: { value: vinyl.artist_api_id } %>
       <%= f.input :price, as: :hidden, input_html: { value: @price } %>
+      <%= f.input :condition, as: :hidden, input_html: { value: @condition } %>
       <%= f.submit%>
     <% end %>
   <% end %>
