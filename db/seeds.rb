@@ -18,8 +18,10 @@ puts "creating random users..."
   User.create!(
     email: Faker::Internet.email,
     password: "123456",
-    user_photo: Faker::Avatar.image(slug: "my-own-slug", size: "50x50", format: "jpg")
-    )
+    user_photo: Faker::Avatar.image(slug: "my-own-slug", size: "50x50", format: "jpg"),
+		nickname: Faker::Hipster.word,
+		address: Faker::Address.street_address
+	)	
 end
 
 url = URI("https://deezerdevs-deezer.p.rapidapi.com/search?q=t")
