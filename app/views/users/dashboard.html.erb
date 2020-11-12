@@ -2,29 +2,6 @@
   <h2>Welcome back, <%= current_user.nickname %>!</h2>
 
   <div class="grid-container" >
-    <%# Rentals box %>
-    <div class="grid-item">
-      <div class="grid-text">
-        <h3>Rentals</h3>
-        <ul>
-          <% @rentals.each do |rental|  %>
-            <li class="grid-card">
-							<div class="album-cover">
-								<%= link_to vinyl_path(rental.vinyl) do %>
-									<%= image_tag rental.vinyl.cover_small %>
-								<% end %>
-							</div>
-							<div class="album-details">
-								<%= link_to vinyl_path(rental.vinyl) do %>
-									<%= rental.vinyl.title %>
-								<% end %>
-							</div>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-
     <%# Pending Confirmations Box %>
     <div class="grid-item">
       <div class="grid-text">
@@ -38,11 +15,29 @@
 								<% end %>
 							</div>
 							<div class="album-details">
-								<p>
+									<p>
 									<%= link_to vinyl_path(rental.vinyl) do %>
-										<p><%= rental.vinyl.title %></p>
-								<p>Requested for: <%= rental.start_date %> to <%= rental.end_date %></p>
+										<%= rental.vinyl.title %>
 									<% end %>
+										requested by: 
+									<%= link_to vinyl_path(rental.user) do  %>
+										<%= rental.user.nickname %>
+									<% end %>
+									</p>
+								<p>For: <%= rental.start_date %> to <%= rental.end_date %></p>
+							<div class="album-status">
+								<p><%= rental.status %> 
+									<% if rental.status == "Pending" %>
+										<%= simple_form_for(rental) do |f| %>
+											<%= f.input :status, as: :hidden, input_html: { value: "Confirmed" } %>
+											<%= f.submit 'Confirm' %>
+										<% end %>
+										<%= simple_form_for(rental) do |f| %>
+											<%= f.input :status, as: :hidden, input_html: { value: "Declined" } %>
+											<%= f.submit 'Decline' %>
+										<% end %>
+									<% end %>
+							</div>
 								</p>
 							</div>
             </li>
@@ -64,10 +59,13 @@
               <% end %>
 						</div>
 						<div class="album-details">
+							<p>
 							<%= link_to vinyl_path(rental.vinyl) do %>
-                <p><%= rental.vinyl.title %> owned by <%= rental.vinyl.user.nickname %></p>
-								<p>Requested for: <%= rental.start_date %> to <%= rental.end_date %></p>
+                <%= rental.vinyl.title %> 
               <% end %>
+							owned by <%= rental.vinyl.user.nickname %></p>
+								<p>Requested for: <%= rental.start_date %> to <%= rental.end_date %></p>
+							</p>
 						</div>
             </li>
           <% end %>
