@@ -38,7 +38,7 @@
   </div>
   <div class="container">
     <div class="owner-sellection mt-5">
-      <h2>The owner owns this vinyl also has...</h2>
+      <h2>Other vinyls from <%= @vinyl.user.nickname %>:</h2>
       <% @vinyl.user.vinyls.each do |vinyl| %>
         <%= link_to vinyl_path(vinyl) do %>
           <div id="disc-sm">
