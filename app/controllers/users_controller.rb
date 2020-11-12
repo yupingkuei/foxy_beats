@@ -29,4 +29,8 @@ class UsersController < ApplicationController
   def set_user
     authorize current_user
   end
+
+  def user_params
+    params.require(:user).permit(:email, :encrypted_password, :nickname, :address)
+  end
 end
