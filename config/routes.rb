@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :vinyls do
     resources :rentals, only: [:new, :create]
   end
+  get '/vinyls/select', to: 'vinyls#select', as: :select_vinyl
   get '/dashboard', to: 'users#dashboard', as: :dashboard
 end
