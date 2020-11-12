@@ -6,7 +6,6 @@
 
 .show-background {
   background-color: #E9A974;
-  height: 100vh;
 }
 .show {
   display: flex;
@@ -21,7 +20,6 @@
   }
 }
 
-
 #disc {
   margin-top: 48px;
   background-image: image-url('image.png');
@@ -35,14 +33,30 @@
   position: absolute;
   top: 122px;
   left: 125px;
-
 }
-
 .round {
   border-radius: 50%;
   width: 260px;
   height: 260px;
+}
 
+#disc-sm {
+  background-image: image-url('image.png');
+  background-size: cover;
+  border-radius: 50%;
+  width: 160px;
+  height: 160px;
+  position: relative;
+}
+#cover-sm {
+  position: absolute;
+  top: 40px;
+  left: 41px;
+}
+.round-sm {
+  border-radius: 50%;
+  width: 82px;
+  height: 82px;
 }
 .intro {
   margin-bottom: 16px;

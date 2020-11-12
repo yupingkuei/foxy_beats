@@ -1,4 +1,3 @@
-
 <div class="show-background">
   <div class="container">
     <div class="show">
@@ -37,7 +36,16 @@
       </div>
     </div>
   </div>
-
-
-
+  <div class="container">
+    <div class="owner-sellection mt-5">
+      <h2>The owner owns this vinyl also has...</h2>
+      <% @vinyl.user.vinyls.each do |vinyl| %>
+        <%= link_to vinyl_path(vinyl) do %>
+          <div id="disc-sm">
+            <div id="cover-sm"><%= image_tag vinyl.cover_small, class: "round-sm" %></div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
