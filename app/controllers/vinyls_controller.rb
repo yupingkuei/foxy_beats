@@ -8,7 +8,11 @@ class VinylsController < ApplicationController
   before_action :set_vinyl, only: [:show, :edit, :update, :destroy]
 
   def index
-    @vinyls = policy_scope(Vinyl).order(created_at: :desc)
+    if params[:query].present?
+      @vinyls = policy_scope(Vinyl).search_by_title_and_artist(params[:query])
+    else
+      @vinyls = policy_scope(Vinyl).order(created_at: :desc)
+    end
   end
 
   def show
@@ -48,10 +52,6 @@ class VinylsController < ApplicationController
     end
   end
 
-  def select
-    @vinyls = policy_scope(Vinyl).order(created_at: :desc)
-  end
-
   def edit
   end
 
@@ -72,6 +72,7 @@ class VinylsController < ApplicationController
 
   def vinyl_params
     params.require(:vinyl).permit(:title, :artist, :cover, :cover_small, :cover_medium, :cover_big, :cover_xl, :album_api_id, :artist_api_id)
+
   end
 
   def set_vinyl
