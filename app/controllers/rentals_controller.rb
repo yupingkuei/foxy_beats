@@ -19,7 +19,6 @@ class RentalsController < ApplicationController
   end
 
   def update
-
     @rental = Rental.find(params[:id])
     authorize @rental
     if @rental.update(rental_params)
@@ -27,6 +26,12 @@ class RentalsController < ApplicationController
     end
   end
 
+  def destroy
+    @rental = Rental.find(params[:id])
+    authorize @rental
+    @rental.destroy
+    redirect_to dashboard_path
+  end
   private
 
   def rental_params
