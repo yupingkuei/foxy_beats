@@ -18,6 +18,20 @@ class RentalsController < ApplicationController
     end
   end
 
+  def edit
+    @rental = Rental.find(params[:id])
+    authorize @rental
+  end
+
+  def update
+
+    @rental = Rental.find(params[:id])
+    authorize @rental
+    if @rental.update(rental_params)
+      redirect_to dashboard_path
+    end
+  end
+
   private
 
   def rental_params

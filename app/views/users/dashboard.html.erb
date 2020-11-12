@@ -89,6 +89,20 @@
                   </div>
                 </div>
               <% end %>
+
+              <%= rental.status %>
+
+              <% if rental.status == "Pending" %>
+                <%= simple_form_for(rental) do |f| %>
+                  <%= f.input :status, as: :hidden, input_html: { value: "Confirmed" } %>
+                  <%= f.submit 'Confirm' %>
+                <% end %>
+                <%= simple_form_for(rental) do |f| %>
+                  <%= f.input :status, as: :hidden, input_html: { value: "Declined" } %>
+                  <%= f.submit 'Decline' %>
+                <% end %>
+              <% end %>
+
             </li>
           <% end %>
         </ul>
