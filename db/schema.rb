@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_12_015659) do
+ActiveRecord::Schema.define(version: 2020_11_12_063241) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(version: 2020_11_12_015659) do
 
   create_table "vinyls", force: :cascade do |t|
     t.string "title"
-    t.string "genre"
     t.string "artist_api_id"
     t.string "album_api_id"
     t.string "artist"
@@ -60,6 +59,7 @@ ActiveRecord::Schema.define(version: 2020_11_12_015659) do
     t.string "cover_big"
     t.string "cover_xl"
     t.string "status"
+    t.string "condition"
     t.index ["user_id"], name: "index_vinyls_on_user_id"
   end
 
