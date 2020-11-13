@@ -2,62 +2,96 @@
   font-family: 'prisma';
   src: asset_url('Monoton-Regular.ttf');
 }
-
-
 .show-background {
   background-color: #E9A974;
 }
 .show {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
-
-.rental-section {
-  width: 520px;
-  margin-top: 96px;
+.intro {
+  padding-left: 72px;
+  width: 400px;
   h1 {
     font-family: 'prisma';
   }
 }
+#rental-form {
+  margin-left: 16px;
 
+  width: 320px;
+}
+.long-btn {
+  width: 140px;
+}
+.form-section {
+  width: 400px;
+}
 #disc {
-  margin-top: 48px;
   background-image: image-url('image.png');
   background-size: cover;
   border-radius: 50%;
-  width: 500px;
-  height: 500px;
+  width: 420px;
+  height: 420px;
   position: relative;
 }
 #cover {
   position: absolute;
-  top: 122px;
-  left: 125px;
+  top: 103px;
+  left: 105px;
 }
 .round {
   border-radius: 50%;
-  width: 260px;
-  height: 260px;
+  width: 218px;
+  height: 218px;
 }
-
 #disc-sm {
   background-image: image-url('image.png');
   background-size: cover;
   border-radius: 50%;
-  width: 160px;
-  height: 160px;
+  width: 155px;
+  height: 155px;
   position: relative;
 }
 #cover-sm {
   position: absolute;
-  top: 40px;
-  left: 41px;
+  top: 38px;
+  left: 39px;
 }
 .round-sm {
   border-radius: 50%;
-  width: 82px;
-  height: 82px;
+  width: 80px;
+  height: 80px;
 }
 .intro {
   margin-bottom: 16px;
 }
+.owner-collection {
+  background-color: #E9A974;
+  h2 {
+    margin-left: 24px;
+  }
+}
+
+.collection {
+  overflow: auto;
+  white-space: nowrap;
+  a {
+    display: inline-block;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

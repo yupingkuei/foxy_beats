@@ -34,9 +34,8 @@ import { changeImg } from '../components/home';
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-	showRentalForm();
+	// showRentalForm();
   changeImg();
-  // setInterval();
 	// navbarScript();
   // Do something (callback)
 
