@@ -5,7 +5,7 @@
     <%# Pending Confirmations Box %>
     <div class="grid-item">
       <div class="grid-text">
-        <h3>Pending Confirmations</h3>
+        <h3>To Loan</h3>
           <% @pending_confirmations.each do |rental|  %>
             <li class="grid-card">
 							<div class="album-cover">
@@ -24,7 +24,7 @@
 									</p>
 								<p>For: <%= rental.start_date %> to <%= rental.end_date %></p>
 							<div class="album-status">
-								<p><%= rental.status %> 
+								<p><%= rental.status %>
 									<% if rental.status == "Pending" %>
 										<%= simple_form_for(rental) do |f| %>
 											<%= f.input :status, as: :hidden, input_html: { value: "Confirmed" } %>
@@ -42,11 +42,11 @@
           <% end %>
       </div>
     </div>
-		
+
     <%# Pending Rentals box %>
     <div class="grid-item">
       <div class="grid-text">
-        <h3>Pending Rentals</h3>
+        <h3>To Rent</h3>
           <% @pending_rentals.each do |rental|  %>
             <li class="grid-card">
 						<div class="album-cover">
