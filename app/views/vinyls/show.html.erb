@@ -7,12 +7,6 @@
           <div id="cover"><%= image_tag @vinyl.cover_big, class: "round" %></div>
         </div>
         <%# modify the vinyl %>
-        <% if current_user and policy(@vinyl).edit? %>
-          <%= link_to "Edit", edit_vinyl_path(@vinyl)  %>
-        <% end %>
-        <% if current_user and policy(@vinyl).destroy? %>
-          <%= link_to "Delete", vinyl_path(@vinyl), method: :delete, data: { confirm: "Delete #{@vinyl.title}?" } %>
-        <% end %>
       </div>
       <div class="rental-section">
         <div class="intro">
@@ -22,15 +16,20 @@
           <h3>Price - ¥<%= @vinyl.price %></h3>
         </div>
         <% if user_signed_in? %>
-          <button id="rental-btn" type="button" class="btn btn-primary">Rent this vinyl</button>
-          <div id="rental-form">
-            <h4>Select the rental dates:</h4>
-            <%= simple_form_for [@vinyl, @rental] do |f| %>
-              <%= f.input :start_date, as: :date, html5: true %>
-              <%= f.input :end_date, as: :date, html5: true %>
-              <%= f.submit %>
-            <% end %>
-          </div>
+          <% if @vinyl.user == current_user %>
+            <%= link_to "Edit", edit_vinyl_path(@vinyl), class: 'btn btn-primary' %>
+            <%= link_to "Delete", vinyl_path(@vinyl), class: 'btn btn-primary', method: :delete, data: { confirm: "Delete #{@vinyl.title}?" } %>
+          <% else %>
+            <button id="rental-btn" type="button" class="btn btn-primary">Rent this vinyl</button>
+            <div id="rental-form">
+              <h4>Select the rental dates:</h4>
+              <%= simple_form_for [@vinyl, @rental] do |f| %>
+                <%= f.input :start_date, as: :date, html5: true %>
+                <%= f.input :end_date, as: :date, html5: true %>
+                <%= f.submit %>
+              <% end %>
+            </div>
+          <% end %>
         <% else %>
           <%= link_to "Sign in to rental", new_user_session_path, class: "btn btn-primary" %>
         <% end %>
@@ -39,7 +38,12 @@
   </div>
   <div class="container">
     <div class="owner-sellection mt-5">
-      <h2>Other vinyls from <%= @vinyl.user.nickname.capitalize %>:</h2>
+
+      <% if @vinyl.user == current_user %>
+        <h2>My other vinyls</h2>
+      <% else %>
+        <h2>Other vinyls from <%= @vinyl.user.nickname.capitalize %>:</h2>
+      <% end %>
       <% @vinyl.user.vinyls.each do |vinyl| %>
         <%= link_to vinyl_path(vinyl) do %>
           <div id="disc-sm">
