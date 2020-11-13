@@ -3,9 +3,9 @@ class UsersController < ApplicationController
 
   def dashboard
     @collection = current_user.vinyls
-    @pending_confirmations = current_user.rentals_as_owner.where.not(status: "Declined")
+    @pending_confirmations = current_user.rentals_as_owner.where.not(status: "Declined").sort_by { |rental| rental.status[0] }.reverse
     @rentals = current_user.rentals.where.not(status: "Pending")
-    @pending_rentals = current_user.rentals
+    @pending_rentals = current_user.rentals.sort_by {|rental| rental.created_at }.reverse
   end
 
   def collection

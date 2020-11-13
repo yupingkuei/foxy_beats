@@ -31,17 +31,7 @@ class VinylsController < ApplicationController
   end
 
   def create
-
     @vinyl = Vinyl.new(vinyl_params)
-    #   title: params["vinyl"]["album"],
-    #   artist: params["vinyl"]["artist"],
-    #   cover: params["vinyl"]["cover"],
-    #   cover_small: params["vinyl"]["cover_small"],
-    #   cover_medium: params["vinyl"]["cover_medium"],
-    #   cover_big: params["vinyl"]["cover_big"],
-    #   cover_xl: params["vinyl"]["cover_xl"],
-    #   album_api_id: params["vinyl"]["album_api_id"],
-    #   artist_api_id: params["vinyl"]["artist_api_id"],
     authorize @vinyl
     @vinyl.user = current_user
     if @vinyl.save
@@ -64,14 +54,13 @@ class VinylsController < ApplicationController
 
   def destroy
     @vinyl.destroy
-    redirect_to vinyls_path
+    redirect_to dashboard_path
   end
 
   private
 
   def vinyl_params
     params.require(:vinyl).permit(:title, :artist, :cover, :cover_small, :cover_medium, :cover_big, :cover_xl, :album_api_id, :artist_api_id, :condition, :price)
-
   end
 
   def set_vinyl
@@ -97,20 +86,21 @@ class VinylsController < ApplicationController
       if result["data"]
         result["data"].select do |element|
           next unless element["artist"]
-
-          vinyls << Vinyl.new(
-            title: element["album"]["title"],
-            artist: element["artist"]["name"],
-            # genre: element["genres"]["data"][0]["name"],
-            cover: element["album"]["cover"],
-            cover_small: element["album"]["cover_small"],
-            cover_medium: element["album"]["cover_medium"],
-            cover_big: element["album"]["cover_big"],
-            cover_xl: element["album"]["cover_xl"],
-            album_api_id: element["album"]["id"],
-            artist_api_id: element["artist"]["id"],
-            price: 0
-          )
+          if element["album"]["title"].downcase == q_album.downcase
+            vinyls << Vinyl.new(
+              title: element["album"]["title"],
+              artist: element["artist"]["name"],
+              # genre: element["genres"]["data"][0]["name"],
+              cover: element["album"]["cover"],
+              cover_small: element["album"]["cover_small"],
+              cover_medium: element["album"]["cover_medium"],
+              cover_big: element["album"]["cover_big"],
+              cover_xl: element["album"]["cover_xl"],
+              album_api_id: element["album"]["id"],
+              artist_api_id: element["artist"]["id"],
+              price: 0
+            )
+          end
         end
       end
       result["next"] ? url = result["next"] : break
