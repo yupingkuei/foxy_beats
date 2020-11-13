@@ -1,14 +1,17 @@
 <div class="index-background">
-  <%= form_with url: vinyls_path, method: :get, local: true do %>
+  <h1><%= @vinyls.count%> vinyls available</h1>
+<div class="index-form">
+  <div class="index-input">
+	<%= form_with url: vinyls_path, method: :get, local: true do %>
     <%= text_field_tag :query,
     params[:query],
     class: "form-control",
     placeholder: "Find by title or artist"
   %>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
+	</div>
+	<div class="index-submit"><%= submit_tag "Search", class: "btn btn-primary" %></div>
   <% end %>
-  <h1><%= @vinyls.count%> vinyls available</h1>
-  <ul>
+</div>
     <div class="cards">
       <% @vinyls.each do |vinyl| %>
         <%= link_to vinyl_path(vinyl) do %>
@@ -32,5 +35,4 @@
         <% end %>
       <% end %>
     </div>
-  </ul>
 </div>
