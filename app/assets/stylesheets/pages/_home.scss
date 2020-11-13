@@ -6,12 +6,12 @@
   background-size: cover;
   position: relative;
   h1 {
-    color: white;
+    color: #262626;
     font-family: 'bratsy';
     font-size: 140px;
     padding: 84px 32px 32px 106px;
     // -webkit-text-stroke: 2px black;
-    text-shadow: 2px 10px 10px 2px black;
+    text-shadow: 8px 8px white;
     // text-shadow: -2px -2px black;
   }
 }
@@ -20,8 +20,8 @@
 }
 .home-btn {
   position: absolute;
-  left: 140px;
-  bottom: 110px;
+  left: 120px;
+  bottom: 164px;
   background-color: #661529;
   color: #F2DEB3;
   padding: 25px 25px;
