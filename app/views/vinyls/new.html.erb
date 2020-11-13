@@ -1,50 +1,60 @@
-<h1>Add a new vinyl</h1>
-<%= form_tag new_vinyl_path, method: :get, local:true do %>
-  <%= label_tag(:q, "Artist:") %>
-  <%= text_field_tag :artist,
-      params[:artist],
-      class: "form-control",
-      placeholder: "Enter artist"
-    %>
-  <%= label_tag(:q, "Title:") %>
-  <%= text_field_tag :title,
-      params[:title],
-      class: "form-control",
-      placeholder: "Enter title"
-    %>
-  <%= label_tag(:q, "Condition:") %>
-  <%= select_tag :condition, options_for_select(Vinyl::CONDITIONS),
-      class: "form-control",
-      placeholder: "Select condition"
-    %>
-  <%= label_tag(:q, "Price:") %>
-  <%= number_field_tag :price,
-      params[:price],
-      required: true,
-      min: 1,
-      class: "form-control",
-      placeholder: "Enter price"
-    %>
-  <%= submit_tag "Add", class: "btn btn-primary" %>
-<% end %>
-<% if params['artist'].present? %>
-  <% @vinyls.each do |vinyl| %>
-    <p><%= vinyl.artist %></p>
-    <p><%= vinyl.title %></p>
-    <p><%= image_tag vinyl.cover_small, class: 'circle'%></p>
-    <%= simple_form_for(@new_vinyl) do |f| %>
-      <%= f.input :artist, as: :hidden, input_html: { value: vinyl.artist } %>
-      <%= f.input :title, as: :hidden, input_html: { value: vinyl.title } %>
-      <%= f.input :cover, as: :hidden, input_html: { value: vinyl.cover } %>
-      <%= f.input :cover_small, as: :hidden, input_html: { value: vinyl.cover_small } %>
-      <%= f.input :cover_medium, as: :hidden, input_html: { value: vinyl.cover_medium } %>
-      <%= f.input :cover_big, as: :hidden, input_html: { value: vinyl.cover_big } %>
-      <%= f.input :cover_xl, as: :hidden, input_html: { value: vinyl.cover_xl } %>
-      <%= f.input :album_api_id, as: :hidden, input_html: { value: vinyl.album_api_id } %>
-      <%= f.input :artist_api_id, as: :hidden, input_html: { value: vinyl.artist_api_id } %>
-      <%= f.input :price, as: :hidden, input_html: { value: @price } %>
-      <%= f.input :condition, as: :hidden, input_html: { value: @condition } %>
-      <%= f.submit "Confirm", class: 'btn btn-primary'%>
-    <% end %>
-  <% end %>
-<% end %>
+<div class="new-background">
+	<div class="new-contents">
+		<h1>Add a new vinyl</h1>
+		<div class="new-form">
+			<%= form_tag new_vinyl_path, method: :get, local:true do %>
+				<div class="new-form-label"><%= label_tag(:q, "Artist:") %><div>
+				<%= text_field_tag :artist,
+						params[:artist],
+						class: "form-control",
+						placeholder: "Enter artist"
+					%>
+				<div class="new-form-label"><%= label_tag(:q, "Title:") %><div>
+				<%= text_field_tag :title,
+						params[:title],
+						class: "form-control",
+						placeholder: "Enter title"
+					%>
+				<div class="new-form-label"><%= label_tag(:q, "Condition:") %><div>
+				<%= select_tag :condition, options_for_select(Vinyl::CONDITIONS),
+						class: "form-control",
+						placeholder: "Select condition"
+					%>
+				<div class="new-form-label"><%= label_tag(:q, "Price:") %><div>
+				<%= number_field_tag :price,
+						params[:price],
+						required: true,
+						min: 1,
+						class: "form-control",
+						placeholder: "Enter price"
+					%>
+				<div class="new-form-submit"><%= submit_tag "Add", class: "btn btn-primary" %></div>
+			<% end %>
+		</div>
+		<div class="new-results">
+			<% if params['artist'].present? %>
+				<% @vinyls.each do |vinyl| %>
+					<div class="new-results-card">
+						<p><%= vinyl.artist %></p>
+						<p><%= vinyl.title %></p>
+						<p><%= image_tag vinyl.cover_small, class: 'circle'%></p>
+						<%= simple_form_for(@new_vinyl) do |f| %>
+							<%= f.input :artist, as: :hidden, input_html: { value: vinyl.artist } %>
+							<%= f.input :title, as: :hidden, input_html: { value: vinyl.title } %>
+							<%= f.input :cover, as: :hidden, input_html: { value: vinyl.cover } %>
+							<%= f.input :cover_small, as: :hidden, input_html: { value: vinyl.cover_small } %>
+							<%= f.input :cover_medium, as: :hidden, input_html: { value: vinyl.cover_medium } %>
+							<%= f.input :cover_big, as: :hidden, input_html: { value: vinyl.cover_big } %>
+							<%= f.input :cover_xl, as: :hidden, input_html: { value: vinyl.cover_xl } %>
+							<%= f.input :album_api_id, as: :hidden, input_html: { value: vinyl.album_api_id } %>
+							<%= f.input :artist_api_id, as: :hidden, input_html: { value: vinyl.artist_api_id } %>
+							<%= f.input :price, as: :hidden, input_html: { value: @price } %>
+							<%= f.input :condition, as: :hidden, input_html: { value: @condition } %>
+							<%= f.submit "Confirm", class: 'btn btn-primary'%>
+						<% end %>
+					</div>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
+</div>
