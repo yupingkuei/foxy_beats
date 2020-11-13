@@ -6,23 +6,21 @@
     <div class="grid-item">
       <div class="grid-text">
         <h3>Pending Confirmations</h3>
-        <ul>
           <% @pending_confirmations.each do |rental|  %>
             <li class="grid-card">
 							<div class="album-cover">
 								<%= link_to vinyl_path(rental.vinyl) do %>
-									<%= image_tag rental.vinyl.cover_small %>
+									<div class="dashboard-cover">
+										<%= image_tag rental.vinyl.cover, class:"cover-square" %>
+									</div>
 								<% end %>
 							</div>
-							<div class="album-details">
+							<div class="album-details pl-3">
 									<p>
 									<%= link_to vinyl_path(rental.vinyl) do %>
-										<%= rental.vinyl.title %>
+										<%= rental.vinyl.title.truncate(25, separator: ' ') %>
 									<% end %>
-										requested by: 
-									<%= link_to vinyl_path(rental.user) do  %>
-										<%= rental.user.nickname %>
-									<% end %>
+										requested by: <%= rental.user.nickname %>
 									</p>
 								<p>For: <%= rental.start_date %> to <%= rental.end_date %></p>
 							<div class="album-status">
@@ -42,7 +40,6 @@
 							</div>
             </li>
           <% end %>
-        </ul>
       </div>
     </div>
 		
@@ -50,49 +47,56 @@
     <div class="grid-item">
       <div class="grid-text">
         <h3>Pending Rentals</h3>
-        <ul>
           <% @pending_rentals.each do |rental|  %>
             <li class="grid-card">
 						<div class="album-cover">
               <%= link_to vinyl_path(rental.vinyl) do %>
-                <%= image_tag rental.vinyl.cover_small %>
+                <%= image_tag rental.vinyl.cover, class:"cover-square" %>
               <% end %>
 						</div>
-						<div class="album-details">
+						<div class="album-details pl-3">
 							<p>
 							<%= link_to vinyl_path(rental.vinyl) do %>
-                <%= rental.vinyl.title %> 
+                <%= rental.vinyl.title.truncate(25, separator: ' ') %> 
               <% end %>
-							owned by <%= rental.vinyl.user.nickname %></p>
+							owned by <%= rental.vinyl.user.nickname %>
+							<%= link_to "#", data:{confirm: rental.vinyl.user.address} do %>
+								(Address)
+							<% end %>
+							</p>
 								<p>Requested for: <%= rental.start_date %> to <%= rental.end_date %></p>
+							</p>
+							<p>
+							<%= rental.status %> 
+							<%= link_to rental_path(rental), method: :delete, data:{confirm: 'for real bro?'} do %>
+								<i class="far fa-window-close"></i>
+							<% end %>
 							</p>
 						</div>
             </li>
           <% end %>
-        </ul>
       </div>
     </div>
   </div>
+
     <%# Collection box %>
     <div id="collection">
       <div class="grid-text">
         <h3>My Collection</h3>
-					<ul>
 						<% @collection.each do |vinyl|  %>
 							<li class="grid-card">
 								<div class="album-cover">
 									<%= link_to vinyl_path(vinyl) do %>
-										<%= image_tag vinyl.cover_small %>
+										<%= image_tag vinyl.cover, class:"cover-square" %>
 									<% end %>
 								</div>
-								<div class="album-details">
+								<div class="album-details pl-3">
 									<%= link_to vinyl_path(vinyl) do %>
 										<%= vinyl.title %>
 									<% end %>
 								</div>
 							</li>
 						<% end %>
-					</ul>
       </div>
     </div>
 </div>

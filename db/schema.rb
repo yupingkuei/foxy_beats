@@ -51,12 +51,12 @@ ActiveRecord::Schema.define(version: 2020_11_12_063241) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "image_url"
     t.string "cover"
     t.string "cover_small"
     t.string "cover_medium"
     t.string "cover_big"
     t.string "cover_xl"
-    t.string "image_url"
     t.string "status"
     t.integer "price"
     t.string "condition"
