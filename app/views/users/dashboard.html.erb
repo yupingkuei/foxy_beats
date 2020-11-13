@@ -27,11 +27,11 @@
 								<p><%= rental.status %>
 									<% if rental.status == "Pending" %>
 										<%= simple_form_for(rental) do |f| %>
-											<%= f.input :status, as: :hidden, input_html: { value: "Confirmed" } %>
+											<%= f.input :status, as: :hidden, remote: true, input_html: { value: "Confirmed" } %>
 											<%= f.submit 'Confirm' %>
 										<% end %>
 										<%= simple_form_for(rental) do |f| %>
-											<%= f.input :status, as: :hidden, input_html: { value: "Declined" } %>
+											<%= f.input :status, as: :hidden, remote: true, input_html: { value: "Declined" } %>
 											<%= f.submit 'Decline' %>
 										<% end %>
 									<% end %>
@@ -57,7 +57,7 @@
 						<div class="album-details pl-3">
 							<p>
 							<%= link_to vinyl_path(rental.vinyl) do %>
-                <%= rental.vinyl.title.truncate(25, separator: ' ') %> 
+                <%= rental.vinyl.title.truncate(25, separator: ' ') %>
               <% end %>
 							owned by <%= rental.vinyl.user.nickname %>
 							<%= link_to "#", data:{confirm: rental.vinyl.user.address} do %>
@@ -67,8 +67,8 @@
 								<p>Requested for: <%= rental.start_date %> to <%= rental.end_date %></p>
 							</p>
 							<p>
-							<%= rental.status %> 
-							<%= link_to rental_path(rental), method: :delete, data:{confirm: 'for real bro?'} do %>
+							<%= rental.status %>
+							<%= link_to rental_path(rental), remote: true, method: :delete, data:{confirm: 'Are you sure you want to remove this rental?'} do %>
 								<i class="far fa-window-close"></i>
 							<% end %>
 							</p>
