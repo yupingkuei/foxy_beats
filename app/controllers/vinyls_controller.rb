@@ -1,4 +1,3 @@
-
 require 'uri'
 require 'net/http'
 require 'openssl'
@@ -65,7 +64,7 @@ class VinylsController < ApplicationController
 
   def destroy
     @vinyl.destroy
-    redirect_to vinyls_path
+    redirect_to dashboard_path
   end
 
   private
