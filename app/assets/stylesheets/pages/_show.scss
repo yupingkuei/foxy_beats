@@ -7,9 +7,12 @@
   src: asset_url('Bratsy-Script.ttf');
 }
 
-
 .show-background {
   background-color: #E9A974;
+  h3, h2{
+  font-family: 'Space Grotesk', sans-serif;
+
+}
 }
 .show {
   display: flex;
