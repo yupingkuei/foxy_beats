@@ -233,8 +233,6 @@ albums.each do |id|
   vinyl.save
 end
 
-
-
 50.times do
   puts "creating random rentals..."
   Rental.create!(
@@ -244,3 +242,30 @@ end
     end_date: Date.today + rand(1..10)
   )
 end
+
+puts 'creating store'
+store = User.new(
+    email: 'chaz@hipster.af.com',
+    password: "123456",
+    user_photo: "fox.jpg",
+    nickname: 'Pure Vegan',
+    address: 'Hokkaido'
+    )
+store.save
+
+puts 'creating yuping'
+yuping = User.new(
+    email: 'yuping@gmail.com',
+    password: "123456",
+    user_photo: "yuping.jpg",
+    nickname: 'Yuping',
+    address: 'Tokyo'
+    )
+yuping.save
+
+'stocking store'
+Vinyl.all.first(20).each do |vinyl|
+  vinyl.user = store
+  vinyl.save
+end
+
