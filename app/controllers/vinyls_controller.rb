@@ -94,22 +94,24 @@ class VinylsController < ApplicationController
       response = http.request(request)
       response.read_body
       result = JSON.parse(response.read_body)
-      result["data"].select do |element|
-        next unless element["artist"]
+      if result["data"]
+        result["data"].select do |element|
+          next unless element["artist"]
 
-        vinyls << Vinyl.new(
-          title: element["album"]["title"],
-          artist: element["artist"]["name"],
-          # genre: element["genres"]["data"][0]["name"],
-          cover: element["album"]["cover"],
-          cover_small: element["album"]["cover_small"],
-          cover_medium: element["album"]["cover_medium"],
-          cover_big: element["album"]["cover_big"],
-          cover_xl: element["album"]["cover_xl"],
-          album_api_id: element["album"]["id"],
-          artist_api_id: element["artist"]["id"],
-          price: 0
-        )
+          vinyls << Vinyl.new(
+            title: element["album"]["title"],
+            artist: element["artist"]["name"],
+            # genre: element["genres"]["data"][0]["name"],
+            cover: element["album"]["cover"],
+            cover_small: element["album"]["cover_small"],
+            cover_medium: element["album"]["cover_medium"],
+            cover_big: element["album"]["cover_big"],
+            cover_xl: element["album"]["cover_xl"],
+            album_api_id: element["album"]["id"],
+            artist_api_id: element["artist"]["id"],
+            price: 0
+          )
+        end
       end
       result["next"] ? url = result["next"] : break
     end

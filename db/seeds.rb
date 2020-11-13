@@ -24,7 +24,7 @@ puts "creating random users..."
   )
 end
 
-url = URI("https://deezerdevs-deezer.p.rapidapi.com/search?q=t")
+url = URI("https://deezerdevs-deezer.p.rapidapi.com/search?q=b")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -56,7 +56,7 @@ albums.each do |id|
   response = http.request(request)
   album = JSON.parse(response.read_body)
   next unless album["artist"]
-  puts "creating vinyl for t..."
+  puts "creating vinyl for b..."
   vinyl = Vinyl.new(
     title: album["title"],
     artist: album["artist"]["name"],
@@ -76,7 +76,7 @@ albums.each do |id|
   vinyl.save
 end
 
-url = URI("https://deezerdevs-deezer.p.rapidapi.com/search?q=g")
+url = URI("https://deezerdevs-deezer.p.rapidapi.com/search?q=h")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -108,7 +108,7 @@ albums.each do |id|
   response = http.request(request)
   album = JSON.parse(response.read_body)
   next unless album["artist"]
-  puts "creating vinyl for g..."
+  puts "creating vinyl for h..."
   vinyl = Vinyl.new(
     title: album["title"],
     artist: album["artist"]["name"],
