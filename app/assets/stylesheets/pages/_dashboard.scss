@@ -1,20 +1,19 @@
 .peach {
 	background-color: #E9A974;
-	height: calc(100vh - 66px);
+	height: 100vh;
 	overflow: auto;
 	h2 {
-    margin-top: 8px;
-		font-weight: bold;
+		font-family: "bratsy";
+		margin-top: 8px;
 		text-align: center;
-    padding: 16px 16px 0 16px;
+    padding: 16px;
     color: #F1DDB3;
-    text-shadow: 2px 2px rgba(102, 21, 41, 0.5);
+		text-shadow: 2px 2px rgba(102, 21, 41, 0.5);
 	}
 }
 .cover-square {
 	width: 100px;
 	height: 100px;
-  border-radius: 5px;
 }
 
 .grid-container {
@@ -34,10 +33,10 @@
 	height: 320px;
 	overflow: scroll;
 	border: 4px solid white;
+	background-color: #F0DCB3;
 	border-radius: 25px;
 	padding: 20px;
-	margin: 8px 24px;
-	background-color: #F0DCB3;
+	margin: 8px;
 		ul {
 			list-style: none;
 		}
@@ -45,10 +44,12 @@
 			margin: 8px;
 		}
 }
+
 #item1 {
 	height: 240px;
 	overflow-x: scroll;
 }
+
 .grid-card {
 	display: flex;
 	align-items: center;
@@ -66,6 +67,7 @@
 			margin-bottom: 0;
 		}
 }
+
 #collection {
 	border: 4px solid white;
 	border-radius: 25px;

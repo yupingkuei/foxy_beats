@@ -12,7 +12,7 @@
   background-color: #E9A974;
   overflow: auto;
   height: 100vh;
-  h3, h2{
+  h3, h2, p {
   font-family: 'Space Grotesk', sans-serif;
 
 }
@@ -31,8 +31,10 @@
 }
 #rental-form {
   margin-left: 16px;
-
-  width: 320px;
+	width: 320px;
+		h4 {
+			font-family: 'Space Grotesk', sans-serif;
+		}
 }
 .long-btn {
   width: 140px;
@@ -99,17 +101,3 @@
     display: inline-block;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
