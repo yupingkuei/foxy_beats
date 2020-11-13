@@ -13,7 +13,6 @@ before_action :configure_permitted_parameters, if: :devise_controller?
 def configure_permitted_parameters
   added_attrs = [:nickname, :email, :password, :address]
   devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :address])
-
 end
   private
 
