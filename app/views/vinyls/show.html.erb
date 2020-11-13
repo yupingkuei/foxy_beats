@@ -45,10 +45,12 @@
         <h2>Other vinyls from <%= @vinyl.user.nickname.capitalize %>:</h2>
       <% end %>
       <% @vinyl.user.vinyls.each do |vinyl| %>
-        <%= link_to vinyl_path(vinyl) do %>
-          <div id="disc-sm">
-            <div id="cover-sm"><%= image_tag vinyl.cover_small, class: "round-sm" %></div>
-          </div>
+        <% unless @vinyl == vinyl %>
+          <%= link_to vinyl_path(vinyl) do %>
+            <div id="disc-sm">
+              <div id="cover-sm"><%= image_tag vinyl.cover_small, class: "round-sm" %></div>
+            </div>
+          <% end %>
         <% end %>
       <% end %>
     </div>
