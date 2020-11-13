@@ -1,21 +1,19 @@
 // Specific CSS for your home-page
 .home-backgorund {
-  background-image: image-url('home.PNG');
+  background-image: image-url('v1.png');
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 66px);
   background-size: cover;
   position: relative;
   h1 {
     font-family: 'prisma';
-    font-size: 100px;
-    padding: 96px 32px 32px 32px;
+    font-size: 120px;
+    padding: 84px 32px 32px 106px;
   }
 }
-
-
 .home-btn {
   position: absolute;
-  right: 40px;
+  left: 140px;
   bottom: 110px;
   background-color: #661529;
   color: #F2DEB3;
@@ -23,11 +21,9 @@
   border-radius: 30px;
   font-size: 25px;
 }
-
 .home-btn:hover {
   text-decoration: none;
   background-color: #CE4530;
   transition: 1s;
   color: #F2DEB3;
-
 }

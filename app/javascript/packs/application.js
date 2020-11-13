@@ -29,11 +29,13 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 // import { navbarScript } from '../components/navbar';
 import { showRentalForm } from '../components/rental_form';
+import { setInterval } from '../components/home';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
 	showRentalForm();
+  // setInterval();
 	// navbarScript();
   // Do something (callback)
 
