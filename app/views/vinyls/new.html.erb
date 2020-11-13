@@ -25,7 +25,7 @@
       class: "form-control",
       placeholder: "Enter price"
     %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
+  <%= submit_tag "Add", class: "btn btn-primary" %>
 <% end %>
 <% if params['artist'].present? %>
   <% @vinyls.each do |vinyl| %>
@@ -44,7 +44,7 @@
       <%= f.input :artist_api_id, as: :hidden, input_html: { value: vinyl.artist_api_id } %>
       <%= f.input :price, as: :hidden, input_html: { value: @price } %>
       <%= f.input :condition, as: :hidden, input_html: { value: @condition } %>
-      <%= f.submit%>
+      <%= f.submit "Confirm", class: 'btn btn-primary'%>
     <% end %>
   <% end %>
 <% end %>
