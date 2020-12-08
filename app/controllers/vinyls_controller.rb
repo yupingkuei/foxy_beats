@@ -86,7 +86,7 @@ class VinylsController < ApplicationController
       if result["data"]
         result["data"].select do |element|
           next unless element["artist"]
-          if element["album"]["title"].downcase == q_album.downcase
+          if element["album"]["title"].downcase.include?( q_album.downcase)
             vinyls << Vinyl.new(
               title: element["album"]["title"],
               artist: element["artist"]["name"],
