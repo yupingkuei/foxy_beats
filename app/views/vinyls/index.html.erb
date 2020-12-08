@@ -1,38 +1,38 @@
 <div class="index-background">
 	<h1><%= @vinyls.count%> vinyls available</h1>
-<div class="index-form">
-  <div class="index-input">
-	<%= form_with url: vinyls_path, method: :get, local: true do %>
-    <%= text_field_tag :query,
+	<div class="index-form">
+		<div class="index-input">
+			<%= form_with url: vinyls_path, method: :get, local: true do %>
+				<%= text_field_tag :query,
     params[:query],
     class: "form-control",
     placeholder: "Find by title or artist"
   %>
+			</div>
+			<div class="index-submit"><%= submit_tag "Search", class: "btn btn-primary" %></div>
+		<% end %>
 	</div>
-	<div class="index-submit"><%= submit_tag "Search", class: "btn btn-primary" %></div>
-  <% end %>
-</div>
-    <div class="cards">
-      <% @vinyls.each do |vinyl| %>
-        <%= link_to vinyl_path(vinyl) do %>
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="card-index">
-                  <div class="card-image">
-                    <%= image_tag vinyl.cover, alt: "alttext", class: 'card-image'%>
-                  </div>
-                </div>
-              </div>
-              <div class="flip-card-back">
-                <div class="flip-card-text">
-                  <h1><%= vinyl.artist %></h1>
-                  <p><%= vinyl.title %></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
+	<div class="cards">
+		<% @vinyls.each do |vinyl| %>
+			<%= link_to vinyl_path(vinyl) do %>
+				<div class="flip-card">
+					<div class="flip-card-inner">
+						<div class="flip-card-front">
+							<div class="card-index">
+								<div class="card-image">
+									<%= image_tag vinyl.cover, alt: "alttext", class: 'card-image'%>
+								</div>
+							</div>
+						</div>
+						<div class="flip-card-back">
+							<div class="flip-card-text">
+								<h1><%= vinyl.artist %></h1>
+								<p><%= vinyl.title %></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		<% end %>
+	</div>
 </div>
