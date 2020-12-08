@@ -15,6 +15,10 @@
 @import "pages/login";
 @import "pages/new";
 
+* {
+  text-decoration: none !important;
+}
+
 p {
 	font-family: 'Space Grotesk', sans-serif;
 }
