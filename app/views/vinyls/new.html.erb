@@ -8,14 +8,14 @@
 						<%= text_field_tag :artist,
 						params[:artist],
 						class: "form-control",
-						placeholder: "Enter artist"
+						placeholder: "Eminem"
 					%>
 						<div class="new-form-label"><%= label_tag(:q, "Title:") %>
 							<div>
 								<%= text_field_tag :title,
 						params[:title],
 						class: "form-control",
-						placeholder: "Enter title"
+						placeholder: "Encore Delxue Version"
 					%>
 								<div class="new-form-label"><%= label_tag(:q, "Condition:") %>
 									<div>
@@ -30,14 +30,14 @@
 						required: true,
 						min: 1,
 						class: "form-control",
-						placeholder: "Enter price"
+						placeholder: "Price in Yen per day"
 					%>
-				<div class="new-form-submit"><%= submit_tag "Add", class: "btn btn-primary btn-block" %></div>
+				<div class="new-form-submit"><%= submit_tag "Next", class: "btn btn-primary btn-block" %></div>
 			<% end %>
 		</div>
 		<div class="new-results">
 			<% if params['artist'].present? %>
-				<h4>Select your vinyl:</h4>
+				<h4>Which one is yours?</h4>
 				<% @vinyls.each do |vinyl| %>
 					<div class="new-results-card">
 						<div class="new-results-image">
