@@ -263,7 +263,7 @@ yuping = User.new(
     )
 yuping.save
 
-'stocking store'
+puts 'stocking store'
 Vinyl.all.first(20).each do |vinyl|
   vinyl.user = store
   vinyl.save
