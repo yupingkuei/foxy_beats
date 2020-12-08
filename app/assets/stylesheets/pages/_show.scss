@@ -50,6 +50,9 @@
   width: 420px;
   height: 420px;
   position: relative;
+  filter: drop-shadow(-3px -3px 10px rgba(58, 39, 25, 0.3))
+    drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.2))
+    drop-shadow(15px 15px 25px rgba(0, 0, 0, 0.4));
 }
 #cover {
   position: absolute;
@@ -68,6 +71,9 @@
   width: 155px;
   height: 155px;
   position: relative;
+  filter: drop-shadow(-3px -3px 5px rgba(58, 39, 25, 0.3))
+    drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.2))
+    drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.2));
 }
 #cover-sm {
   position: absolute;
