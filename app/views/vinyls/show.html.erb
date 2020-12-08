@@ -20,11 +20,13 @@
 					<%= link_to "Delete", vinyl_path(@vinyl), class: 'btn btn-primary long-btn', method: :delete, data: { confirm: "Delete #{@vinyl.title}?" } %>
 				<% else %>
 					<div id="rental-form">
-						<h4>Select the rental dates:</h4>
+						<h4>Select your rental dates:</h4>
 						<%= simple_form_for [@vinyl, @rental] do |f| %>
 							<%= f.input :start_date, as: :date, html5: true %>
 							<%= f.input :end_date, as: :date, html5: true %>
-							<%= f.button :submit, class: "btn btn-primary" %>
+              <%= button_tag(type: 'submit', class: "btn btn-primary") do %> 
+                <span>Request to rent</span>
+              <% end %>
 						<% end %>
 					</div>
 				<% end %>
