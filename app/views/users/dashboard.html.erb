@@ -5,96 +5,111 @@
     <div class="grid-item">
       <div class="grid-text">
         <h3>To Loan</h3>
-        <% @pending_confirmations.each do |rental|  %>
-          <li class="grid-card">
-            <div class="album-cover">
-              <%= link_to vinyl_path(rental.vinyl) do %>
-                <div class="dashboard-cover">
-                  <%= image_tag rental.vinyl.cover, class:"cover-square" %>
-                </div>
-              <% end %>
-            </div>
-            <div class="album-details pl-3">
-              <p>
-                <%= link_to vinyl_path(rental.vinyl) do %>
-                  <%= rental.vinyl.title.truncate(25, separator: ' ') %>
-                <% end %>
-                requested by: <%= rental.user.nickname %>
-                <% if rental.status == "Confirmed" %>
-                  <%= link_to "#", data:{confirm: rental.vinyl.user.address} do %>
-                    (Address)
-                  <% end %>
-                <% end %>
-              </p>
-              <p>For: <%= rental.start_date %> to <%= rental.end_date %></p>
-              <div class="album-status">
-                <p><%= rental.status %>
-                  <% if rental.status == "Pending" %>
-                    <div class="d-flex">
-                      <%= simple_form_for(rental) do |f| %>
-                        <%= f.input :status, as: :hidden, remote: true, input_html: { value: "Confirmed" } %>
-                        <div class="m-1"><%= f.submit 'Confirm', class: 'btn btn-primary'%></div>
-                      <% end %>
-                      <%= simple_form_for(rental) do |f| %>
-                        <%= f.input :status, as: :hidden, remote: true, input_html: { value: "Declined" } %>
-                        <div class="m-1"><%= f.submit 'Decline', class: 'btn btn-primary' %></div>
-                      <% end %>
-                    </div>
-                  <% end %>
-                </div>
-              </p>
-            </div>
-          </li>
-        <% end %>
+				<% if @pending_confirmations.any? %>
+					<% @pending_confirmations.each do |rental|  %>
+						<li class="grid-card">
+							<div class="album-cover">
+								<%= link_to vinyl_path(rental.vinyl) do %>
+									<div class="dashboard-cover">
+										<%= image_tag rental.vinyl.cover, class:"cover-square" %>
+									</div>
+								<% end %>
+							</div>
+							<div class="album-details pl-3">
+								<p>
+									<%= link_to vinyl_path(rental.vinyl) do %>
+										<%= rental.vinyl.title.truncate(25, separator: ' ') %>
+									<% end %>
+									requested by: <%= rental.user.nickname %>
+									<% if rental.status == "Confirmed" %>
+										<%= link_to "#", data:{confirm: rental.vinyl.user.address} do %>
+											(Address)
+										<% end %>
+									<% end %>
+								</p>
+								<p>For: <%= rental.start_date %> to <%= rental.end_date %></p>
+								<div class="album-status">
+									<p><%= rental.status %>
+										<% if rental.status == "Pending" %>
+											<div class="d-flex">
+												<%= simple_form_for(rental) do |f| %>
+													<%= f.input :status, as: :hidden, remote: true, input_html: { value: "Confirmed" } %>
+													<div class="m-1"><%= f.submit 'Confirm', class: 'btn btn-primary'%></div>
+												<% end %>
+												<%= simple_form_for(rental) do |f| %>
+													<%= f.input :status, as: :hidden, remote: true, input_html: { value: "Declined" } %>
+													<div class="m-1"><%= f.submit 'Decline', class: 'btn btn-primary' %></div>
+												<% end %>
+											</div>
+										<% end %>
+									</div>
+								</p>
+							</div>
+						</li>
+					<% end %>
+				<% else %>
+					<p>None yet!</p>
+				<% end %>
       </div>
     </div>
     <%# Pending Rentals box %>
     <div class="grid-item">
       <div class="grid-text">
         <h3>To Rent</h3>
-        <% @pending_rentals.each do |rental|  %>
-          <li class="grid-card">
-            <div class="album-cover">
-              <%= link_to vinyl_path(rental.vinyl) do %>
-                <%= image_tag rental.vinyl.cover, class:"cover-square" %>
-              <% end %>
-            </div>
-            <div class="album-details pl-3">
-              <p>
-                <%= link_to vinyl_path(rental.vinyl) do %>
-                  <%= rental.vinyl.title.truncate(25, separator: ' ') %>
-                <% end %>
-                owned by <%= rental.vinyl.user.nickname %>
-                <%= link_to "#", data:{confirm: rental.vinyl.user.address} do %>
-                  (Address)
-                <% end %>
-              </p>
-              <p>Requested for: <%= rental.start_date %> to <%= rental.end_date %></p>
-            </p>
-            <p>
-              <%= rental.status %>
-              <% unless rental.status == "Confirmed" %>
-                <%= link_to rental_path(rental), remote: true, method: :delete, data:{confirm: 'Are you sure you want to remove this rental?'} do %>
-                  <i class="far fa-window-close"></i>
-                <% end %>
-              <% end %>
-            </p>
-          </div>
-        </li>
-      <% end %>
+				<% if @pending_rentals.any? %>
+					<% @pending_rentals.each do |rental|  %>
+						<li class="grid-card">
+							<div class="album-cover">
+								<%= link_to vinyl_path(rental.vinyl) do %>
+									<%= image_tag rental.vinyl.cover, class:"cover-square" %>
+								<% end %>
+							</div>
+							<div class="album-details pl-3">
+								<p>
+									<%= link_to vinyl_path(rental.vinyl) do %>
+										<%= rental.vinyl.title.truncate(25, separator: ' ') %>
+									<% end %>
+									owned by <%= rental.vinyl.user.nickname %>
+									<%= link_to "#", data:{confirm: rental.vinyl.user.address} do %>
+										(Address)
+									<% end %>
+								</p>
+								<p>Requested for: <%= rental.start_date %> to <%= rental.end_date %></p>
+							</p>
+							<p>
+								<%= rental.status %>
+								<% unless rental.status == "Confirmed" %>
+									<%= link_to rental_path(rental), remote: true, method: :delete, data:{confirm: 'Are you sure you want to remove this rental?'} do %>
+										<i class="far fa-window-close"></i>
+									<% end %>
+								<% end %>
+							</p>
+						</div>
+					</li>
+					<% end %>
+				<% else %>
+					<p>How about browsing through our <%= link_to "collection?", vinyls_path %></p>
+				<% end %>
     </div>
   </div>
 </div>
 <%# Collection box %>
 <div class="owner-collection">
   <div class="collection">
-    <h3>My Collection</h3>
-    <% @collection.each do |vinyl| %>
-      <%= link_to vinyl_path(vinyl) do %>
-        <div id="disc-sm">
-          <div id="cover-sm"><%= image_tag vinyl.cover_small, class: "round-sm" %></div>
-        </div>
-      <% end %>
-    <% end %>
+		<% if @collection.any? %>
+			<h3>My Collection</h3>
+			<% @collection.each do |vinyl| %>
+				<%= link_to vinyl_path(vinyl) do %>
+					<div id="disc-sm">
+						<div id="cover-sm"><%= image_tag vinyl.cover_small, class: "round-sm" %></div>
+					</div>
+				<% end %>
+			<% end %>
+		<% else %>
+			<div>
+				<div><h3>Your Collection is empty! <%= link_to "Click me to add one now!", new_vinyl_path %> </h3></div>
+			</div>
+		<% end %>
+		
   </div>
 </div>

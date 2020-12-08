@@ -1,52 +1,52 @@
 <div class="show-background">
-  <div class="show">
-    <div class="intro">
-      <h1><%= @vinyl.title %></h1>
-      <h3>Artist - <%= @vinyl.artist %></h3>
-      <h3>Condition - <%= @vinyl.condition %></h3>
-      <h3>Price - ¥<%= @vinyl.price %></h3>
-    </div>
-    <div>
-      <%# vinyl details %>
-      <div id="disc">
-        <div id="cover"><%= image_tag @vinyl.cover_big, class: "round" %></div>
-      </div>
-      <%# modify the vinyl %>
-    </div>
-    <div class="form-section">
-      <% if user_signed_in? %>
-        <% if @vinyl.user == current_user %>
-          <%= link_to "Edit", edit_vinyl_path(@vinyl), class: 'btn btn-primary long-btn' %>
-          <%= link_to "Delete", vinyl_path(@vinyl), class: 'btn btn-primary long-btn', method: :delete, data: { confirm: "Delete #{@vinyl.title}?" } %>
-        <% else %>
-          <div id="rental-form">
-            <h4>Select the rental dates:</h4>
-            <%= simple_form_for [@vinyl, @rental] do |f| %>
-              <%= f.input :start_date, as: :date, html5: true %>
-              <%= f.input :end_date, as: :date, html5: true %>
-              <%= f.button :submit, class: "btn btn-primary" %>
-            <% end %>
-          </div>
-        <% end %>
-      <% else %>
-        <%= link_to "Sign in to rent", new_user_session_path, class: "btn btn-primary" %>
-      <% end %>
-    </div>
-  </div>
-<div class="owner-collection">
-  <% if @vinyl.user == current_user %>
-    <h2>My other vinyls</h2>
-  <% else %>
-    <h2>Other vinyls from <%= @vinyl.user.nickname.capitalize %>:</h2>
-  <% end %>
-  <div class="collection">
-    <% @vinyl.user.vinyls.each do |vinyl| %>
-      <%= link_to vinyl_path(vinyl) do %>
-        <div id="disc-sm">
-          <div id="cover-sm"><%= image_tag vinyl.cover_small, class: "round-sm" %></div>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-</div>
+	<div class="show">
+		<div class="intro">
+			<h1><%= @vinyl.title %></h1>
+			<h3>Artist - <%= @vinyl.artist %></h3>
+			<h3>Condition - <%= @vinyl.condition %></h3>
+			<h3>Price - ¥<%= @vinyl.price %></h3>
+		</div>
+		<div>
+			<%# vinyl details %>
+			<div id="disc">
+				<div id="cover"><%= image_tag @vinyl.cover_big, class: "round" %></div>
+			</div>
+			<%# modify the vinyl %>
+		</div>
+		<div class="form-section">
+			<% if user_signed_in? %>
+				<% if @vinyl.user == current_user %>
+					<%= link_to "Edit", edit_vinyl_path(@vinyl), class: 'btn btn-primary long-btn' %>
+					<%= link_to "Delete", vinyl_path(@vinyl), class: 'btn btn-primary long-btn', method: :delete, data: { confirm: "Delete #{@vinyl.title}?" } %>
+				<% else %>
+					<div id="rental-form">
+						<h4>Select the rental dates:</h4>
+						<%= simple_form_for [@vinyl, @rental] do |f| %>
+							<%= f.input :start_date, as: :date, html5: true %>
+							<%= f.input :end_date, as: :date, html5: true %>
+							<%= f.button :submit, class: "btn btn-primary" %>
+						<% end %>
+					</div>
+				<% end %>
+			<% else %>
+				<%= link_to "Sign in to rent", new_user_session_path, class: "btn btn-primary" %>
+			<% end %>
+		</div>
+	</div>
+	<div class="owner-collection">
+		<% if @vinyl.user == current_user %>
+			<h2>My other vinyls</h2>
+		<% else %>
+			<h2>Other vinyls from <%= @vinyl.user.nickname.capitalize %>:</h2>
+		<% end %>
+		<div class="collection">
+			<% @vinyl.user.vinyls.each do |vinyl| %>
+				<%= link_to vinyl_path(vinyl) do %>
+					<div id="disc-sm">
+						<div id="cover-sm"><%= image_tag vinyl.cover_small, class: "round-sm" %></div>
+					</div>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
 </div>

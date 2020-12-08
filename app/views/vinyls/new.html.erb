@@ -3,25 +3,29 @@
 		<h1>Add a new vinyl</h1>
 		<div class="new-form">
 			<%= form_tag new_vinyl_path, method: :get, local:true do %>
-				<div class="new-form-label"><%= label_tag(:q, "Artist:") %><div>
-				<%= text_field_tag :artist,
+				<div class="new-form-label"><%= label_tag(:q, "Artist:") %>
+					<div>
+						<%= text_field_tag :artist,
 						params[:artist],
 						class: "form-control",
 						placeholder: "Enter artist"
 					%>
-				<div class="new-form-label"><%= label_tag(:q, "Title:") %><div>
-				<%= text_field_tag :title,
+						<div class="new-form-label"><%= label_tag(:q, "Title:") %>
+							<div>
+								<%= text_field_tag :title,
 						params[:title],
 						class: "form-control",
 						placeholder: "Enter title"
 					%>
-				<div class="new-form-label"><%= label_tag(:q, "Condition:") %><div>
-				<%= select_tag :condition, options_for_select(Vinyl::CONDITIONS),
+								<div class="new-form-label"><%= label_tag(:q, "Condition:") %>
+									<div>
+										<%= select_tag :condition, options_for_select(Vinyl::CONDITIONS),
 						class: "form-control",
 						placeholder: "Select condition"
 					%>
-				<div class="new-form-label"><%= label_tag(:q, "Price:") %><div>
-				<%= number_field_tag :price,
+										<div class="new-form-label"><%= label_tag(:q, "Price:") %>
+											<div>
+												<%= number_field_tag :price,
 						params[:price],
 						required: true,
 						min: 1,
