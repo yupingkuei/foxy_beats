@@ -1,5 +1,5 @@
 <div class="index-background">
-  <h1><%= @vinyls.count%> vinyls available</h1>
+  <span class="index-title"><h1><%= @vinyls.count%> vinyls available</h1></span>
   <div class="index-form d-flex">
     <div class="index-input d-flex">
       <%= form_with url: vinyls_path, method: :get, class: "d-flex", local: true do%>
@@ -29,8 +29,8 @@
         </div>
         <div class="flip-card-back">
           <div class="flip-card-text">
-            <h1><%= vinyl.artist %></h1>
-            <p><%= vinyl.title %></p>
+            <h1><%= vinyl.title.truncate(28) %></h1>
+            <p><%= vinyl.artist %></p>
           </div>
         </div>
       </div>
