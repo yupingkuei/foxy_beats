@@ -1,5 +1,11 @@
 <div class="index-background">
-  <span class="index-title"><h1><%= @vinyls.count%> vinyls available</h1></span>
+  <span class="index-title">
+    <% if @vinyls.count > 2 || @vinyls.count == 0 %>
+      <h1><%= @vinyls.count%> vinyls available</h1>
+    <% else %>
+      <h1>1 vinyl available</h1>
+    <% end %>
+  </span>
   <div class="index-form d-flex">
     <div class="index-input d-flex">
       <%= form_with url: vinyls_path, method: :get, class: "d-flex", local: true do%>
