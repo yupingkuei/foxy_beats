@@ -16,20 +16,30 @@
 								<% end %>
 							</div>
 							<div class="album-details pl-3">
-								<p>
-									<%= link_to vinyl_path(rental.vinyl) do %>
+								<span>
+									<strong><%= link_to vinyl_path(rental.vinyl) do %>
 										<%= rental.vinyl.title.truncate(25, separator: ' ') %>
 									<% end %>
-									requested by: <%= rental.user.nickname %>
+									requested by <%= rental.user.nickname %>
 									<% if rental.status == "Confirmed" %>
 										<%= link_to "#", data:{confirm: rental.vinyl.user.address} do %>
-											(Address)
+											<i class="fas fa-house-user"></i>
 										<% end %>
 									<% end %>
-								</p>
-								<p>For: <%= rental.start_date %> to <%= rental.end_date %></p>
+                  </strong>
+								</span>
+								<p>From <%= rental.start_date.strftime("%b %d, %Y") %> to <%= rental.end_date.strftime("%b %d, %Y") %></p>
 								<div class="album-status">
-									<p><%= rental.status %>
+									<p>
+
+										<% if rental.status == "Pending" %>
+											<span class="pending-color">Pending</span>
+										<% elsif rental.status == "Declined" %>
+											<span class="declined-color">Declined</span>
+										<% else %>
+											<span class="confirmed-color">Confirmed</span>
+										<% end %>
+
 										<% if rental.status == "Pending" %>
 											<div class="d-flex">
 												<%= simple_form_for(rental) do |f| %>
@@ -38,7 +48,11 @@
 												<% end %>
 												<%= simple_form_for(rental) do |f| %>
 													<%= f.input :status, as: :hidden, remote: true, input_html: { value: "Declined" } %>
-													<div class="m-1"><%= f.submit 'Decline', class: 'btn btn-primary' %></div>
+                          <div class="m-1">
+                            <%= button_tag(type: 'submit', class: "btn btn-outline-primary") do %> 
+                              <i class="fas fa-ban"></i>
+                            <% end %>
+                          </div>
 												<% end %>
 											</div>
 										<% end %>
@@ -65,30 +79,45 @@
 								<% end %>
 							</div>
 							<div class="album-details pl-3">
-								<p>
+								<span>
+                  <strong>
 									<%= link_to vinyl_path(rental.vinyl) do %>
 										<%= rental.vinyl.title.truncate(25, separator: ' ') %>
 									<% end %>
 									owned by <%= rental.vinyl.user.nickname %>
-									<%= link_to "#", data:{confirm: rental.vinyl.user.address} do %>
-										(Address)
-									<% end %>
-								</p>
-								<p>Requested for: <%= rental.start_date %> to <%= rental.end_date %></p>
+                    <% if rental.status == "Confirmed" %>
+                      <%= link_to "#", data:{confirm: rental.vinyl.user.address} do %>
+                        <i class="fas fa-house-user"></i>
+                      <% end %>
+                    <% end %>
+                  </strong>
+								</span>
+								<p>From <%= rental.start_date.strftime("%b %d, %Y") %> to <%= rental.end_date.strftime("%b %d, %Y") %></p>
 							</p>
 							<p>
-								<%= rental.status %>
-								<% unless rental.status == "Confirmed" %>
-									<%= link_to rental_path(rental), remote: true, method: :delete, data:{confirm: 'Are you sure you want to remove this rental?'} do %>
-										<i class="far fa-window-close"></i>
-									<% end %>
-								<% end %>
+                <% if rental.status == "Pending" %>
+                  <span class="pending-color">Pending</span>
+                  <span>
+                    <%= link_to rental_path(rental), remote: true, method: :delete, data:{confirm: 'Are you sure you want to cancel this rental?'} do %>
+                      <i class="fas fa-ban ml-2"></i>
+                    <% end %>
+                  </span>
+                <% elsif rental.status == "Declined" %>
+                  <span class="declined-color">Declined</span>
+                  <span>
+                    <%= link_to rental_path(rental), remote: true, method: :delete, data:{confirm: 'Are you sure you want to remove this rental?'} do %>
+                      <i class="fas fa-ban ml-2"></i>
+                    <% end %>
+                  </span>
+                <% else %>
+                  <span class="confirmed-color">Confirmed</span>
+                <% end %>
 							</p>
 						</div>
 					</li>
 					<% end %>
 				<% else %>
-					<p>How about browsing through our <%= link_to "collection?", vinyls_path %></p>
+					<p>Foxy Beats has plenty of vinyls. We're sure you can <%= link_to "find one you like here.", vinyls_path %></p>
 				<% end %>
     </div>
   </div>
@@ -107,9 +136,8 @@
 			<% end %>
 		<% else %>
 			<div>
-				<div><h3>Your Collection is empty! <%= link_to "Click me to add one now!", new_vinyl_path %> </h3></div>
+				<div><h3><%= link_to "Click here to start your Collection!", new_vinyl_path %> </h3></div>
 			</div>
 		<% end %>
-		
   </div>
 </div>
