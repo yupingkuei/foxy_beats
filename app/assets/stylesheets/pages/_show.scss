@@ -20,19 +20,18 @@
 }
 .show {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 .intro {
-  padding-left: 72px;
-  width: 30%;
+  width: 25%;
   h1 {
     font-family: "prisma";
   }
   margin-bottom: 16px;
 }
 #rental-form {
-  margin-left: 16px;
+  padding: 0;
   width: 100%;
   h4 {
     font-family: "Space Grotesk", sans-serif;
@@ -42,7 +41,7 @@
   width: 140px;
 }
 .form-section {
-  width: 30%;
+  width: 25%;
 }
 #disc {
   background-image: image-url("image.png");
@@ -154,15 +153,45 @@
     height: 60px;
   }
   #rental-form {
-    margin-left: 0;
     padding: 16px;
     width: 100%;
-    h4 {
-      font-family: "Space Grotesk", sans-serif;
-    }
   }
 }
-@media only screen and (min-width: 768px) and (max-width: 1199px) {
+
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+  .show {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .intro {
+    width: 20%;
+    h1 {
+      font-size: 32px;
+    }
+    h3 {
+      font-size: 24px;
+    }
+  }
+  #rental-form {
+    padding: 0;
+    width: 100%;
+  }
+  .form-section {
+    width: 20%;
+  }
+  #disc {
+    width: 369px;
+    height: 369px;
+  }
+  #cover {
+    top: 92px;
+    left: 93px;
+  }
+  .round {
+    width: 190px;
+    height: 190px;
+  }
 }
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 960px) {
 }
