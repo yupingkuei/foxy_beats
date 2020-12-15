@@ -131,14 +131,14 @@
     width: 35%;
   }
   .form-section {
-    width: 100%;
-    text-align: center;
+    width: 369px;
     margin-bottom: 16px;
   }
   .owner-collection {
     background-color: #e9a974;
     h2 {
       margin-left: 16px;
+      font-size: 24px;
     }
   }
   #disc-sm {
@@ -152,6 +152,14 @@
   .round-sm {
     width: 60px;
     height: 60px;
+  }
+  #rental-form {
+    margin-left: 0;
+    padding: 16px;
+    width: 100%;
+    h4 {
+      font-family: "Space Grotesk", sans-serif;
+    }
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 1199px) {
