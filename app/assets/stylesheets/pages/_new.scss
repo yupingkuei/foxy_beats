@@ -1,52 +1,52 @@
 .new-background {
-	background-color: #E9A974;
-	height: 100vh;
-	overflow: auto;
-		h1  {
-      font-family: "bratsy";
-      font-size: 64px;
-			text-align: center;
-			padding: 8px;
-			color: #F1DDB3;
-			text-shadow: 2px 2px rgba(102, 21, 41, 0.5);
-		}
+  background-color: #e9a974;
+  height: 100vh;
+  overflow: auto;
+  h1 {
+    font-family: "bratsy";
+    font-size: 64px;
+    text-align: center;
+    padding: 8px;
+    color: #f1ddb3;
+    text-shadow: 2px 2px rgba(102, 21, 41, 0.5);
+  }
 }
 
 .new-contents {
-	padding: 10px;
+  padding: 10px;
 }
 
 .new-form {
-	width: 640px;
-	margin: auto;
-	border: 4px solid white;
-	background-color: #F0DCB3;
-	border-radius: 25px;
-	padding: 20px;
-	.new-form-label {
-		margin-top: 4px;
-	}
-	.new-form-submit {
-		margin-top: 8px;
-	}
+  width: 50%;
+  margin: auto;
+  border: 4px solid white;
+  background-color: #f0dcb3;
+  border-radius: 25px;
+  padding: 20px;
+  .new-form-label {
+    margin-top: 4px;
+  }
+  .new-form-submit {
+    margin-top: 8px;
+  }
 }
 
 .new-results {
   margin-top: 24px;
   h4 {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: "Space Grotesk", sans-serif;
   }
-	.new-results-card {
-		padding: 10px;
-		display: flex;
-	}
-	.new-results-details {
-		margin-left: 40px;
-	}
+  .new-results-card {
+    padding: 10px;
+    display: flex;
+  }
+  .new-results-details {
+    margin-left: 40px;
+  }
 }
 
 #new-disc-sm {
-  background-image: image-url('image.png');
+  background-image: image-url("image.png");
   background-size: cover;
   border-radius: 50%;
   width: 104px;
@@ -57,4 +57,24 @@
   position: absolute;
   top: 25px;
   left: 25px;
+}
+@media only screen and (max-width: 479px) {
+  .new-form {
+    width: 90%;
+  }
+  .new-background {
+    h1 {
+      font-size: 32px;
+    }
+  }
+}
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  .new-form {
+    width: 80%;
+  }
+  .new-background {
+    h1 {
+      font-size: 48px;
+    }
+  }
 }
