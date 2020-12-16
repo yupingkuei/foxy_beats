@@ -1,13 +1,13 @@
 // Specific CSS for your home-page
 .home-backgorund {
-  background-image: image-url('v1.png');
+  background-image: image-url("v1.png");
   width: 100vw;
   height: calc(100vh - 66px);
   background-size: cover;
   position: relative;
   h1 {
     color: #262626;
-    font-family: 'bratsy';
+    font-family: "bratsy";
     font-size: 140px;
     padding: 84px 32px 32px 106px;
     // -webkit-text-stroke: 2px black;
@@ -16,21 +16,98 @@
   }
 }
 .home-backgorund-second {
-  background-image: image-url('v3.png');
+  background-image: image-url("v3.png");
 }
 .home-btn {
   position: absolute;
   left: 120px;
   bottom: 164px;
   background-color: #661529;
-  color: #F2DEB3;
+  color: #f2deb3;
   padding: 25px 25px;
   border-radius: 30px;
   font-size: 25px;
 }
 .home-btn:hover {
   text-decoration: none;
-  background-color: #CE4530;
+  background-color: #ce4530;
   transition: 1s;
-  color: #F2DEB3;
+  color: #f2deb3;
+}
+@media only screen and (max-width: 399px) {
+  .home-backgorund {
+    background-image: image-url("iru-mobile.png");
+    background-position: center;
+    h1 {
+      font-size: 72px;
+      padding: 8px 8px 8px 16px;
+      // -webkit-text-stroke: 2px black;
+      text-shadow: 8px 8px white;
+      // text-shadow: -2px -2px black;
+    }
+  }
+  .home-backgorund-second {
+    background-image: image-url("iru-mobile.png");
+    background-position: center;
+  }
+  .home-btn {
+    left: 60px;
+    bottom: 20%;
+    padding: 25px 25px;
+    border-radius: 30px;
+    font-size: 25px;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (min-width: 400px) and (max-width: 767px) {
+  .home-backgorund {
+    background-image: image-url("iru-mobile.png");
+    background-position: top left;
+    h1 {
+      font-size: 80px;
+      padding: 8px 8px 8px 16px;
+      // -webkit-text-stroke: 2px black;
+      text-shadow: 8px 8px white;
+      // text-shadow: -2px -2px black;
+    }
+  }
+  .home-backgorund-second {
+    background-image: image-url("iru-mobile.png");
+    background-position: top left;
+  }
+  .home-btn {
+    left: 90px;
+    bottom: 20%;
+    padding: 25px 25px;
+    border-radius: 30px;
+    font-size: 25px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .home-backgorund {
+    background-image: image-url("iru-mobile.png");
+    background-position: top left;
+    h1 {
+      font-size: 108px;
+      padding: 32px 106px 80px 106px;
+      // -webkit-text-stroke: 2px black;
+      text-shadow: 8px 8px white;
+      // text-shadow: -2px -2px black;
+    }
+  }
+  .home-backgorund-second {
+    background-image: image-url("iru-mobile.png");
+    background-position: top left;
+  }
+  .home-btn {
+    left: 120px;
+    bottom: 10%;
+    padding: 25px 25px;
+    border-radius: 30px;
+    font-size: 25px;
+  }
+}
+@media only screen and (min-width: 1024px) {
 }
