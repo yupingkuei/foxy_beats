@@ -50,6 +50,9 @@
   width: 420px;
   height: 420px;
   position: relative;
+  filter: drop-shadow(-3px -3px 10px rgba(58, 39, 25, 0.3))
+    drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.2))
+    drop-shadow(15px 15px 25px rgba(0, 0, 0, 0.4));
 }
 #cover {
   position: absolute;
@@ -68,6 +71,9 @@
   width: 155px;
   height: 155px;
   position: relative;
+  filter: drop-shadow(-3px -3px 5px rgba(58, 39, 25, 0.3))
+    drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.2))
+    drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.2));
 }
 #cover-sm {
   position: absolute;
@@ -91,7 +97,6 @@
     padding-left: 96px;
   }
 }
-
 .collection {
   overflow: auto;
   white-space: nowrap;
@@ -99,13 +104,18 @@
     display: inline-block;
   }
 }
+
 @media only screen and (max-width: 767px) {
   .show {
     display: block;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
   }
   #disc {
     width: 369px;
     height: 369px;
+    margin: 0 auto;
   }
   #cover {
     top: 92px;
@@ -130,7 +140,7 @@
     width: 35%;
   }
   .form-section {
-    width: 369px;
+    width: 100%;
     margin-bottom: 16px;
   }
   .owner-collection {
@@ -154,35 +164,22 @@
   }
   #rental-form {
     padding: 16px;
-    width: 100%;
+    width: 85%;
+    margin: 0 auto;
   }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 959px) {
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
   .show {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-  .intro {
-    width: 20%;
-    h1 {
-      font-size: 32px;
-    }
-    h3 {
-      font-size: 24px;
-    }
-  }
-  #rental-form {
-    padding: 0;
+    display: block;
     width: 100%;
-  }
-  .form-section {
-    width: 20%;
+    margin: 0 auto;
+    text-align: center;
   }
   #disc {
     width: 369px;
     height: 369px;
+    margin: 0 auto;
   }
   #cover {
     top: 92px;
@@ -192,6 +189,48 @@
     width: 190px;
     height: 190px;
   }
+  .intro {
+    width: 100%;
+    padding: 8px 16px 0 16px;
+    margin: 0;
+    h1 {
+      font-size: 32px;
+    }
+    h3 {
+      font-size: 24px;
+    }
+  }
+  .long-btn {
+    width: 35%;
+  }
+  .form-section {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  .owner-collection {
+    background-color: #e9a974;
+    h2 {
+      margin-left: 16px;
+      font-size: 24px;
+    }
+  }
+  #disc-sm {
+    width: 120px;
+    height: 120px;
+  }
+  #cover-sm {
+    top: 30px;
+    left: 31px;
+  }
+  .round-sm {
+    width: 60px;
+    height: 60px;
+  }
+  #rental-form {
+    padding: 16px;
+    width: 50%;
+    margin: 0 auto;
+  }
 }
-@media only screen and (min-width: 960px) {
+@media only screen and (min-width: 1024px) {
 }

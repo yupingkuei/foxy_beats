@@ -6,13 +6,11 @@
       <h3>Condition - <%= @vinyl.condition %></h3>
       <h3>Price - ¥<%= @vinyl.price %></h3>
     </div>
-    <div>
-      <%# vinyl details %>
-      <div id="disc">
-        <div id="cover"><%= image_tag @vinyl.cover_big, class: "round" %></div>
-      </div>
-      <%# modify the vinyl %>
+    <%# vinyl details %>
+    <div id="disc">
+      <div id="cover"><%= image_tag @vinyl.cover_big, class: "round" %></div>
     </div>
+    <%# modify the vinyl %>
     <div class="form-section">
       <% if user_signed_in? %>
         <% if @vinyl.user == current_user %>
