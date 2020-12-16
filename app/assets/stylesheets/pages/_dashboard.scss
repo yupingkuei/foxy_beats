@@ -128,9 +128,6 @@
     .grid-item {
       margin: 8px 8px;
     }
-    .album-details {
-
-    }
   }
 
   .user-dash-collection {
@@ -142,6 +139,46 @@
   }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1023px) {}
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .peach {
+    h2 {
+      padding: 0;
+    }
+    h3 {
+      font-size: 24px;
+    }
+  }
 
-@media only screen and (min-width: 1024px) {}
+  .grid-container {
+    grid-template-columns: 1fr 1fr;
+    margin: 16px 0px;
+    padding: 0;
+    .grid-item {
+      margin: 0 auto;
+      width: 360px;
+      height: 480px;
+    }
+  }
+
+  .dashboard-cards-container {
+    height: 400px;
+    margin: 16px;
+  }
+
+  .user-dash-collection {
+    margin-top: 32px;
+    h3 {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .user-dash-collection {
+    h3 {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+  }
+}
