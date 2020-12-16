@@ -2,11 +2,11 @@
   <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "b.png" %>
   <% end %>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <%# <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+  </button> %>
+  <div class="" id="navbarSupportedContent">
+    <ul class="nav-drop">
       <% if user_signed_in? %>
         <li class="nav-item dropdown">
           <%# user avatar %>
@@ -16,7 +16,7 @@
             <%= image_tag current_user.user_photo, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, style:"background-color:#8e233e;border:2px solid #470d1c;" %>
           <% end %>
           <%# dropdown menu actions %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <div class="dropdown-menu dropdown-menu-right">
             <%= link_to "Dashboard", dashboard_path, class: "dropdown-item" %>
             <%= link_to "Search", vinyls_path, class: "dropdown-item" %>
             <%= link_to "Add a Vinyl", new_vinyl_path, class: "dropdown-item" %>
