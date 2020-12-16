@@ -3,8 +3,8 @@ require 'net/http'
 require 'openssl'
 
 class VinylsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_vinyl, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: %i[index show]
+  before_action :set_vinyl, only: %i[show edit update destroy]
 
   def index
     if params[:query].present?
@@ -22,9 +22,9 @@ class VinylsController < ApplicationController
     authorize current_user
     @new_vinyl = Vinyl.new
     if params[:artist].present?
-      @vinyls = filter(params["artist"], params["title"])
-      @price = params["price"].to_i
-      @condition = params["condition"]
+      @vinyls = filter(params['artist'], params['title'])
+      @price = params['price'].to_i
+      @condition = params['condition']
     else
       true
     end
@@ -41,8 +41,7 @@ class VinylsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @vinyl.update(vinyl_params)
@@ -60,7 +59,19 @@ class VinylsController < ApplicationController
   private
 
   def vinyl_params
-    params.require(:vinyl).permit(:title, :artist, :cover, :cover_small, :cover_medium, :cover_big, :cover_xl, :album_api_id, :artist_api_id, :condition, :price)
+    params.require(:vinyl).permit(
+      :title,
+      :artist,
+      :cover,
+      :cover_small,
+      :cover_medium,
+      :cover_big,
+      :cover_xl,
+      :album_api_id,
+      :artist_api_id,
+      :condition,
+      :price
+    )
   end
 
   def set_vinyl
@@ -77,34 +88,35 @@ class VinylsController < ApplicationController
 
     while true
       request = Net::HTTP::Get.new(url)
-      request["x-rapidapi-key"] = '8484d87f48msh17a33fcb2849ba2p10f605jsn1f2eb1a588ee'
-      request["x-rapidapi-host"] = 'deezerdevs-deezer.p.rapidapi.com'
-      request["accept-language"] = 'en-US'
+      request['x-rapidapi-key'] =
+        '8484d87f48msh17a33fcb2849ba2p10f605jsn1f2eb1a588ee'
+      request['x-rapidapi-host'] = 'deezerdevs-deezer.p.rapidapi.com'
+      request['accept-language'] = 'en-US'
       response = http.request(request)
       response.read_body
       result = JSON.parse(response.read_body)
-      if result["data"]
-        result["data"].select do |element|
-          next unless element["artist"]
-          if element["album"]["title"].downcase.include?( q_album.downcase)
-            vinyls << Vinyl.new(
-              title: element["album"]["title"],
-              artist: element["artist"]["name"],
-              # genre: element["genres"]["data"][0]["name"],
-              cover: element["album"]["cover"],
-              cover_small: element["album"]["cover_small"],
-              cover_medium: element["album"]["cover_medium"],
-              cover_big: element["album"]["cover_big"],
-              cover_xl: element["album"]["cover_xl"],
-              album_api_id: element["album"]["id"],
-              artist_api_id: element["artist"]["id"],
-              price: 0
-            )
+      if result['data']
+        result['data'].select do |element|
+          next unless element['artist']
+          if element['album']['title'].downcase.include?(q_album.downcase)
+            vinyls <<
+              Vinyl.new(
+                title: element['album']['title'],
+                artist: element['artist']['name'], # genre: element["genres"]["data"][0]["name"],
+                cover: element['album']['cover'],
+                cover_small: element['album']['cover_small'],
+                cover_medium: element['album']['cover_medium'],
+                cover_big: element['album']['cover_big'],
+                cover_xl: element['album']['cover_xl'],
+                album_api_id: element['album']['id'],
+                artist_api_id: element['artist']['id'],
+                price: 0
+              )
           end
         end
       end
-      result["next"] ? url = result["next"] : break
+      result['next'] ? url = result['next'] : break
     end
-    vinyls.uniq{|vinyl| vinyl.title}
+    vinyls.uniq { |vinyl| vinyl.title }
   end
 end
