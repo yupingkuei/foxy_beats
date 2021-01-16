@@ -1,22 +1,22 @@
 .peach {
-	background-color: #E9A974;
+	background-color: #e9a974;
 	height: 100vh;
 	overflow: auto;
 	h2 {
-    font-family: "Bratsy";
-    font-size: 64px;
+		font-family: "Bratsy";
+		font-size: 64px;
 		margin-top: 8px;
 		text-align: center;
-    padding: 16px;
-    color: #F1DDB3;
+		padding: 16px;
+		color: #f1ddb3;
 		text-shadow: 2px 2px rgba(102, 21, 41, 0.5);
-  }
-  h3 {
-    font-family: "Prisma";
-    color: #651429;
-    font-weight: 1000;
-    text-shadow: 2px 2px rgba(102, 21, 41, 0.5);
-  }
+	}
+	h3 {
+		font-family: "Prisma";
+		color: #651429;
+		font-weight: 1000;
+		text-shadow: 2px 2px rgba(102, 21, 41, 0.5);
+	}
 }
 .cover-square {
 	width: 120px;
@@ -31,7 +31,7 @@
 }
 
 .grid-text {
-  width: 100%;
+	width: 100%;
 }
 
 .grid-item {
@@ -39,22 +39,22 @@
 	height: 320px;
 	// overflow: scroll;
 	border: 4px solid white;
-	background-color: #F0DCB3;
+	background-color: #f0dcb3;
 	border-radius: 25px;
 	padding: 20px;
 	margin: 8px;
-		ul {
-			list-style: none;
-		}
-		li {
-			margin: 8px;
-		}
+	ul {
+		list-style: none;
+	}
+	li {
+		margin: 8px;
+	}
 }
 
 .dashboard-cards-container {
-  height: 240px;
-  width: 100%;
-  overflow: scroll;
+	height: 240px;
+	width: 100%;
+	overflow: scroll;
 }
 
 #item1 {
@@ -65,19 +65,19 @@
 .grid-card {
 	display: flex;
 	align-items: center;
-		album-cover {
-			margin: 16px;
-		}
-		album-details {
-			padding: 16px;
-			margin-left: 16px;
-		}
-		album-status {
-			display: flex;
-		}
-		p {
-			margin-bottom: 0;
-		}
+	album-cover {
+		margin: 16px;
+	}
+	album-details {
+		padding: 16px;
+		margin-left: 16px;
+	}
+	album-status {
+		display: flex;
+	}
+	p {
+		margin-bottom: 0;
+	}
 }
 
 #collection {
@@ -87,98 +87,98 @@
 	margin: 8px 56px;
 	height: 200px;
 	overflow-x: scroll;
-	background-color: #F0DCB3;
-		h3 {
-			color: #651429;
-			font-weight: bold;
-			text-shadow: 2px 2px rgba(102, 21, 41, 0.5);
-		}
-		li {
-			margin: 4px;
-		}
+	background-color: #f0dcb3;
+	h3 {
+		color: #651429;
+		font-weight: bold;
+		text-shadow: 2px 2px rgba(102, 21, 41, 0.5);
+	}
+	li {
+		margin: 4px;
+	}
 }
 
 .pending-color {
-  color: orange;
+	color: orange;
 }
 .declined-color {
-  color: red;
+	color: red;
 }
 .confirmed-color {
-  color: green;
+	color: green;
 }
 
 // MEDIA QUERIES
 
 @media only screen and (max-width: 767px) {
-  .peach {
-    h2 {
-      font-size: 40px;
-      padding: 0;
-    }
-    h3 {
-      font-size: 24px;
-    }
-  }
+	.peach {
+		h2 {
+			font-size: 40px;
+			padding: 0;
+		}
+		h3 {
+			font-size: 24px;
+		}
+	}
 
-  .grid-container {
-    grid-template-columns: 1fr;
-    margin: 0px 0px;
-    padding: 0;
-    .grid-item {
-      margin: 8px 8px;
-    }
-  }
+	.grid-container {
+		grid-template-columns: 1fr;
+		margin: 0px 0px;
+		padding: 0;
+		.grid-item {
+			margin: 8px 8px;
+		}
+	}
 
-  .user-dash-collection {
-    margin-top: 8px;
-    h3 {
-      text-align: center;
-      margin-bottom: 8px;
-    }
-  }
+	.user-dash-collection {
+		margin-top: 8px;
+		h3 {
+			text-align: center;
+			margin-bottom: 8px;
+		}
+	}
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
-  .peach {
-    h2 {
-      padding: 0;
-    }
-    h3 {
-      font-size: 24px;
-    }
-  }
+	.peach {
+		h2 {
+			padding: 0;
+		}
+		h3 {
+			font-size: 24px;
+		}
+	}
 
-  .grid-container {
-    grid-template-columns: 1fr 1fr;
-    margin: 16px 0px;
-    padding: 0;
-    .grid-item {
-      margin: 0 auto;
-      width: 360px;
-      height: 480px;
-    }
-  }
+	.grid-container {
+		grid-template-columns: 1fr 1fr;
+		margin: 16px 0px;
+		padding: 0;
+		.grid-item {
+			margin: 0 auto;
+			width: 360px;
+			height: 480px;
+		}
+	}
 
-  .dashboard-cards-container {
-    height: 400px;
-    margin: 16px;
-  }
+	.dashboard-cards-container {
+		height: 400px;
+		margin: 16px;
+	}
 
-  .user-dash-collection {
-    margin-top: 32px;
-    h3 {
-      text-align: center;
-      margin-bottom: 16px;
-    }
-  }
+	.user-dash-collection {
+		margin-top: 32px;
+		h3 {
+			text-align: center;
+			margin-bottom: 16px;
+		}
+	}
 }
 
 @media only screen and (min-width: 1024px) {
-  .user-dash-collection {
-    h3 {
-      text-align: center;
-      margin-bottom: 16px;
-    }
-  }
+	.user-dash-collection {
+		h3 {
+			text-align: center;
+			margin-bottom: 16px;
+		}
+	}
 }
